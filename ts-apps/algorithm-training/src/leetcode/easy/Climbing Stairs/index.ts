@@ -64,6 +64,7 @@ export const climbStairs = (stairsLength: number): number | void => {
 
   const computeLongSteps = (stairsLength: number) =>
     stairsLength % longStep === 0 ? stairsLength / longStep : stairsLength / longStep - 1;
+
   const isValid = (n: number) => n && n >= 1 && n <= 45;
 
   if (!isValid(stairsLength)) return;

@@ -1,15 +1,15 @@
 import { logger } from '../../../shared';
 
-import {
-  preorderTraversal,
-  preorderTraversalTree,
-} from './Binary Tree Preorder Traversal';
 import { inorderTraversal, inorderTraversalTree } from './Binary Tree Inorder Traversal';
+import { levelOrder } from './Binary Tree Level Order Traversal';
 import {
   postorderTraversal,
   postOrderTraversalTree,
 } from './Binary Tree Postorder Traversal';
-import { levelOrder } from './Binary Tree Level Order Traversal';
+import {
+  preorderTraversal,
+  preorderTraversalTree,
+} from './Binary Tree Preorder Traversal';
 import { maxDepth } from './Maximum Depth of Binary Tree';
 import { isSymmetric, symmetricTree } from './Symmetric Tree';
 

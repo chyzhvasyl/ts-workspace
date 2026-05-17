@@ -52,8 +52,8 @@ export const deleteNode = (): number[] => {
 
     const { next } = node;
 
-    node.val = next?.val as number;
-    node.next = next?.next as ListNode;
+    node.val = next!.val;
+    node.next = next!.next;
   };
 
   deleteNode(head.next);

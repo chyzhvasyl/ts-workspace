@@ -1,11 +1,9 @@
-import { ArgumentsHost, Inject, Injectable, Module, Scope } from '@nestjs/common';
+import { Inject, Injectable, Module } from '@nestjs/common';
 import { REQUEST } from '@nestjs/core';
 
 @Injectable()
 export class Feature2Service {
-  constructor(@Inject(REQUEST) private readonly request: any) {
-    console.log('Feature2Service created');
-  }
+  constructor(@Inject(REQUEST) private readonly request: Request) {}
 
   getHello(): string {
     return 'Hello from Feature2!';

@@ -1,9 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
+import { useEffect, useState } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+
 import NxWelcome from './nx-welcome';
 
-import { Route, Routes, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import styles from './app.module.scss';
 
 interface Resp {
   message: string;
@@ -13,15 +14,15 @@ export function App() {
   const [data, setData] = useState<Resp | null>(null);
 
   useEffect(() => {
-    let getData = async (): Promise<void> => {
-      const resp = await fetch('http://localhost:3000/api').then<Resp>((resp) =>
-        resp.json(),
+    const getData = async (): Promise<void> => {
+      const resp = await fetch('http://localhost:3000/api').then<Resp>((res) =>
+        res.json(),
       );
 
       setData(resp);
     };
 
-    getData();
+    void getData();
   }, []);
 
   return (
@@ -46,21 +47,21 @@ export function App() {
       </div>
       <Routes>
         <Route
-          path="/"
           element={
             <div>
               This is the generated root route.{' '}
               <Link to="/page-2">Click here for page 2.</Link>
             </div>
           }
+          path="/"
         />
         <Route
-          path="/page-2"
           element={
             <div>
               <Link to="/">Click here to go back to root page.</Link>
             </div>
           }
+          path="/page-2"
         />
       </Routes>
       {/* END: routes */}

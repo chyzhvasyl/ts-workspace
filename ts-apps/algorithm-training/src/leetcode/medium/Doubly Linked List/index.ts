@@ -113,7 +113,7 @@ export class MyLinkedList {
       if (!node) return;
 
       if (i + 1 === index) {
-        node.next = node.next?.next as MyLinkedList;
+        node.next = node.next?.next ?? null;
 
         if (!node.next?.prev) continue;
 
@@ -144,7 +144,7 @@ export class MyLinkedList {
 
   private deleteHead(): void {
     this.val = this.next?.val;
-    this.next = this.next?.next as MyLinkedList;
+    this.next = this.next?.next ?? null;
     this.prev = null;
   }
 }
@@ -159,7 +159,7 @@ export const getMyLinkedList2 = (): MyLinkedList => {
   myLinkedList.deleteAtIndex(1); // now the linked list is 1->3
   myLinkedList.get(1);
 
-  return myLinkedList.next as MyLinkedList;
+  return myLinkedList;
 };
 
 // Accepted

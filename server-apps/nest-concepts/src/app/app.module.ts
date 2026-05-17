@@ -1,10 +1,11 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
+
 import { Feature1Module } from './feature1/feature1.module';
 import { Feature2Module } from './feature2/feature2.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoggerMiddleware } from './middleware';
-import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [Feature1Module, Feature2Module],
@@ -19,7 +20,7 @@ import { APP_GUARD } from '@nestjs/core';
   ],
 })
 export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
+  configure(consumer: MiddlewareConsumer): void {
     consumer.apply(LoggerMiddleware).forRoutes('*');
   }
 }
