@@ -1,10 +1,10 @@
 import { defineConfig } from '@playwright/test';
-import { nxE2EPreset } from '@nx/playwright/preset';
 import { workspaceRoot } from '@nx/devkit';
+import { nxE2EPreset } from '@nx/playwright/preset';
 
 import baseConfig from '../../playwright.config';
 
-const baseURL = process.env['BASE_URL'] || 'http://localhost:4200';
+const baseURL = process.env['BASE_URL'] ?? 'http://localhost:4200';
 
 export default defineConfig({
   ...baseConfig,

@@ -1,6 +1,6 @@
 module.exports = {
   extends: ['../../.eslintrc.js'],
-  ignorePatterns: ['!**/*', '.eslintrc.js'],
+  ignorePatterns: ['!**/*', '.eslintrc.js', 'cypress.config.ts', 'cypress.config.*.ts'],
   overrides: [
     {
       files: ['*.ts', '*.tsx', '*.js', '*.jsx'],

@@ -28,6 +28,7 @@ module.exports = {
     'import/prefer-default-export': 'off', // named exports are fine
     'import/no-extraneous-dependencies': 'off', // managed by Nx module boundaries
     'import/no-named-as-default': 'off',
+    'import/no-unresolved': 'off', // TypeScript handles module resolution
 
     // ─── TypeScript ──────────────────────────────────────────────────────────
     '@typescript-eslint/no-explicit-any': 'error',

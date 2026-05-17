@@ -5,4 +5,5 @@
  * Example — clean up auth state:
  * await fs.rm('playwright/.auth', { recursive: true, force: true });
  */
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 export default async function globalTeardown(): Promise<void> {}

@@ -1,6 +1,6 @@
 module.exports = {
   extends: ['plugin:playwright/recommended', '../../.eslintrc.js'],
-  ignorePatterns: ['!**/*', '.eslintrc.js'],
+  ignorePatterns: ['!**/*', '.eslintrc.js', 'playwright.config.ts', 'playwright.config.*.ts'],
   overrides: [
     {
       files: ['*.ts', '*.tsx', '*.js', '*.jsx'],

@@ -9,4 +9,5 @@
  * await page.context().storageState({ path: 'playwright/.auth/user.json' });
  * await browser.close();
  */
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 export default async function globalSetup(): Promise<void> {}
