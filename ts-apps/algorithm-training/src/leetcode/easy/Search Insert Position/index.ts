@@ -1,4 +1,4 @@
-//Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+// Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
 //
 // You must write an algorithm with O(log n) runtime complexity.
 //
@@ -28,10 +28,8 @@
 export const searchInsert = (nums: number[], target: number): number => {
   let start = 0;
   let end = nums.length - 1;
-
   const first = nums[start];
   const last = nums[end];
-
   const isFirst = target <= first;
   const isLast = target === last;
   const isAfterLast = target > last;
@@ -86,4 +84,4 @@ export const searchInsert = (nums: number[], target: number): number => {
   return -1;
 };
 
-//Accepted
+// Accepted

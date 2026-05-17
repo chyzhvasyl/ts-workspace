@@ -1,112 +1,90 @@
-//TODO: move to a flat configuration
+// TODO: migrate to flat config (eslint.config.js) when all plugins support it
 module.exports = {
   root: true,
-  ignorePatterns: [],
-  plugins: [
-    '@nx',
-    'react',
-    '@typescript-eslint',
-    'prettier',
-    'simple-import-sort',
-    'import',
-  ],
+  ignorePatterns: ['**/*'], // projects opt-in via "ignorePatterns": ["!**/*"]
+  plugins: ['@nx', '@typescript-eslint', 'simple-import-sort', 'import', 'prettier'],
   extends: [
-    //
-    'airbnb',
-    'airbnb-typescript',
-    'airbnb/hooks',
-    // use @typescript-eslint/eslint-plugin@7.x @typescript-eslint/parser@7.x, otherwise install the latest
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:import/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'prettier',
+    'prettier', // must be last — disables formatting rules that conflict with Prettier
   ],
+  settings: {
+    react: { version: 'detect' },
+  },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.base.json',
   },
   rules: {
+    // ─── Import sorting ──────────────────────────────────────────────────────
     'simple-import-sort/imports': 'error',
-    'import/no-extraneous-dependencies': 'off',
+    'simple-import-sort/exports': 'error',
+    'import/order': 'off', // replaced by simple-import-sort
+    'import/prefer-default-export': 'off', // named exports are fine
+    'import/no-extraneous-dependencies': 'off', // managed by Nx module boundaries
     'import/no-named-as-default': 'off',
-    'react/react-in-jsx-scope': 'off',
-    'linebreak-style': 'error',
-    'react/jsx-props-no-spreading': 'off',
+
+    // ─── TypeScript ──────────────────────────────────────────────────────────
+    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+    ],
+    '@typescript-eslint/prefer-optional-chain': 'error',
+    '@typescript-eslint/prefer-nullish-coalescing': 'error',
+    '@typescript-eslint/no-non-null-assertion': 'warn', // warn instead of off — use sparingly
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      { prefer: 'type-imports', fixStyle: 'separate-type-imports' },
+    ],
+    '@typescript-eslint/no-floating-promises': 'error', // always handle promises
+    '@typescript-eslint/no-misused-promises': [
+      'error',
+      { checksVoidReturn: { attributes: false } },
+    ],
+    '@typescript-eslint/only-throw-error': 'error',
+
+
+    // ─── JavaScript quality ──────────────────────────────────────────────────
     'no-console': 'error',
     'no-var': 'error',
-    'react/jsx-sort-props': [
-      'error',
-      {
-        shorthandFirst: true,
-      },
-    ],
-    '@typescript-eslint/no-floating-promises': 'off',
-    'react/jsx-one-expression-per-line': 'off',
-    'spaced-comment': ['error', 'always'],
-    eqeqeq: ['error', 'smart'],
-    'no-else-return': 'error',
-    'no-empty-function': 'error',
-    'react/require-default-props': 'off',
-    '@typescript-eslint/no-unsafe-argument': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/ban-ts-ignore': 'off',
-    'max-len': [
-      'error',
-      {
-        code: 120,
-      },
-    ],
-    'consistent-return': 'off',
-    'array-callback-return': 'warn',
-    'import/prefer-default-export': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/no-explicit-any': 'error',
-    '@typescript-eslint/prefer-optional-chain': 'error',
-    '@typescript-eslint/no-loss-of-precision': 'off',
-    'react/button-has-type': 'off',
+    'no-void': ['error', { allowAsStatement: true }], // allow void for floating promises
     'no-plusplus': 'off',
     'no-param-reassign': 'off',
-    '@typescript-eslint/no-misused-promises': [
-      2,
-      {
-        checksVoidReturn: {
-          attributes: false,
-        },
-      },
+    'no-else-return': 'error',
+    'no-empty-function': 'error',
+    eqeqeq: ['error', 'smart'],
+    'spaced-comment': ['error', 'always'],
+    'consistent-return': 'off',
+    'array-callback-return': 'warn',
+    'linebreak-style': ['error', 'unix'],
+    'max-len': [
+      'error',
+      { code: 120, ignoreUrls: true, ignoreStrings: true, ignoreTemplateLiterals: true },
     ],
+
+    // ─── React ───────────────────────────────────────────────────────────────
+    'react/react-in-jsx-scope': 'off', // not needed in React 17+
+    'react/jsx-props-no-spreading': 'off',
+    'react/require-default-props': 'off', // TypeScript handles this
+    'react/button-has-type': 'off',
+    'react/jsx-sort-props': ['error', { shorthandFirst: true, callbacksLast: true }],
+    'react/jsx-one-expression-per-line': 'off', // conflicts with Prettier
+
+    // ─── Formatting (Prettier handles these, but keep consistent whitespace) ─
     'padding-line-between-statements': [
       'error',
-      {
-        blankLine: 'always',
-        prev: '*',
-        next: 'return',
-      },
-      {
-        blankLine: 'always',
-        prev: ['const', 'let', 'import'],
-        next: '*',
-      },
-      {
-        blankLine: 'any',
-        prev: ['import'],
-        next: ['import'],
-      },
-      {
-        blankLine: 'never',
-        prev: ['const', 'let'],
-        next: ['const', 'let'],
-      },
-      {
-        blankLine: 'always',
-        prev: ['multiline-const', 'multiline-let'],
-        next: ['*'],
-      },
-      {
-        blankLine: 'always',
-        prev: ['*'],
-        next: ['multiline-const', 'multiline-let'],
-      },
+      { blankLine: 'always', prev: '*', next: 'return' },
+      { blankLine: 'always', prev: ['const', 'let', 'import'], next: '*' },
+      { blankLine: 'any', prev: ['import'], next: ['import'] },
+      { blankLine: 'never', prev: ['const', 'let'], next: ['const', 'let'] },
+      { blankLine: 'always', prev: ['multiline-const', 'multiline-let'], next: ['*'] },
+      { blankLine: 'always', prev: ['*'], next: ['multiline-const', 'multiline-let'] },
       {
         blankLine: 'always',
         prev: ['*'],
@@ -117,30 +95,11 @@ module.exports = {
         prev: ['if', 'switch', 'for', 'while', 'try', 'function', 'class'],
         next: ['*'],
       },
-      {
-        blankLine: 'never',
-        prev: ['case'],
-        next: ['case'],
-      },
-    ],
-    'object-curly-spacing': [
-      'error',
-      'always',
-      {
-        objectsInObjects: true,
-        arraysInObjects: true,
-      },
-    ],
-    'array-bracket-spacing': [
-      'error',
-      'always',
-      {
-        objectsInArrays: true,
-        arraysInArrays: false,
-      },
+      { blankLine: 'never', prev: ['case'], next: ['case'] },
     ],
   },
   overrides: [
+    // ── All TS/JS files: import groups + Nx module boundaries ─────────────────
     {
       files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
       rules: {
@@ -148,33 +107,24 @@ module.exports = {
           'error',
           {
             groups: [
-              // Add internal packages showing on top, You can add "react-hook-form", "react-query" etc.
-              ['^@nx', '^react', '^\\w'],
-              // npm packages
-              // Anything that starts with a letter (or digit or underscore), or `@` followed by a letter.
-              // ["^\\w"],
-              // Internal packages.
-              ['^@store(/.*|$)'],
-              ['^@components(/.*|$)'],
-              ['^@ui(/.*|$)'],
-              ['^@lib(/.*|$)'],
-              ['^@pages(/.*|$)'],
-              ['^@routes(/.*|$)'],
-              ['^@layouts(/.*|$)'],
-              ['^@utils(/.*|$)'],
-              ['^@assets(/.*|$)'],
-              ['^@helpers(/.*|$)'],
-              ['^@hooks(/.*|$)'],
-              ['^@providers(/.*|$)'],
-              ['^@services(/.*|$)'],
-              // Side effect imports.
+              // 1. Angular & Nx (future Angular app support)
+              ['^@angular', '^@ngrx', '^@nx'],
+              // 2. React & other frameworks
+              ['^react', '^react-dom', '^react-router'],
+              // 3. All other external packages
+              ['^@?\\w'],
+              // 4. Internal path aliases (@store, @components, etc.)
+              [
+                '^@(store|components|ui|lib|pages|routes|layouts|utils|assets|helpers|hooks|providers|services)(/.*|$)',
+              ],
+              // 5. Side effect imports
               ['^\\u0000'],
-              // Parent imports. Put `..` last.
+              // 6. Parent imports
               ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
-              // Other relative imports. Put same-folder imports and `.` last.
+              // 7. Same-folder + index imports
               ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
-              // Style imports.
-              ['^.+\\.?(css)$'],
+              // 8. Style imports last
+              ['^.+\\.s?css$'],
             ],
           },
         ],
@@ -183,32 +133,59 @@ module.exports = {
           {
             enforceBuildableLibDependency: true,
             allow: [],
-            depConstraints: [
-              {
-                sourceTag: '*',
-                onlyDependOnLibsWithTags: ['*'],
-              },
-            ],
+            depConstraints: [{ sourceTag: '*', onlyDependOnLibsWithTags: ['*'] }],
           },
         ],
       },
     },
+    // ── TypeScript files: Nx TS rules ─────────────────────────────────────────
     {
       files: ['*.ts', '*.tsx'],
       extends: ['plugin:@nx/typescript'],
       rules: {},
     },
+    // ── JavaScript files: Nx JS rules ─────────────────────────────────────────
     {
       files: ['*.js', '*.jsx'],
       extends: ['plugin:@nx/javascript'],
       rules: {},
     },
+    // ── NestJS module files (service + module in one file is intentional) ─────
     {
-      files: ['*.spec.ts', '*.spec.tsx', '*.spec.js', '*.spec.jsx'],
-      env: {
-        jest: true,
+      files: ['*.module.ts'],
+      rules: {
+        'max-classes-per-file': 'off',
+        'class-methods-use-this': 'off',
       },
-      rules: {},
+    },
+    // ── Webpack / build config files ──────────────────────────────────────────
+    {
+      files: ['webpack*.config.js', 'webpack*.config.ts'],
+      rules: {
+        'import/no-import-module-exports': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+      },
+    },
+    // ── Test files (Jest / Vitest) ─────────────────────────────────────────────
+    {
+      files: [
+        '*.spec.ts',
+        '*.spec.tsx',
+        '*.spec.js',
+        '*.spec.jsx',
+        '*.test.ts',
+        '*.test.tsx',
+      ],
+      env: { jest: true },
+      rules: {
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/require-await': 'off',
+        'no-empty-function': 'off',
+      },
     },
   ],
 };

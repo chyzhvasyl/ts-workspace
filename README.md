@@ -4,11 +4,11 @@ Nx monorepo with TypeScript applications for learning and experimentation.
 
 ## Apps
 
-| App | Path | Stack | Dev Server |
-| --- | --- | --- | --- |
-| **react-concepts** | `client-apps/react-concepts` | React 19, Vite, SCSS modules, React Router 7 | `localhost:4200` |
-| **nest-concepts** | `server-apps/nest-concepts` | NestJS 11, Express, Webpack, RxJS | `localhost:3000/api` |
-| **algorithm-training** | `ts-apps/algorithm-training` | Pure TypeScript algorithms & data structures | — |
+| App                    | Path                         | Stack                                        | Dev Server           |
+| ---------------------- | ---------------------------- | -------------------------------------------- | -------------------- |
+| **react-concepts**     | `client-apps/react-concepts` | React 19, Vite, SCSS modules, React Router 7 | `localhost:4200`     |
+| **nest-concepts**      | `server-apps/nest-concepts`  | NestJS 11, Express, Webpack, RxJS            | `localhost:3000/api` |
+| **algorithm-training** | `ts-apps/algorithm-training` | Pure TypeScript algorithms & data structures | —                    |
 
 ## Prerequisites
 
@@ -56,4 +56,3 @@ nx test algorithm-training       # Jest
 ## Author
 
 Vasyl Chyzh
-

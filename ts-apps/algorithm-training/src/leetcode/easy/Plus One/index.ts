@@ -38,6 +38,7 @@ export const plusOne = (digits: number[]): number[] => {
     (prev: string, currentValue) => prev.concat(currentValue.toString(10)),
     '',
   );
+
   const num = BigInt(str) + BigInt(1);
 
   return num.toString().split('').map(Number);

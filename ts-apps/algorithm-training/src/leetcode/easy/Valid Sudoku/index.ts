@@ -71,6 +71,7 @@ const isSudokuBoard = (board: string[][] = []): boolean =>
 // ================================================================
 
 const getRowByIndex = (board: string[][] = [], i: number): string[] => board[i];
+
 const getColumnByIndex = (board: string[][] = [], i: number): string[] =>
   board.map((row: string[]) => row[i]);
 
@@ -128,8 +129,10 @@ const hasDuplicates = (arr: string[] = []): boolean =>
   arr.some((item: string, index: number, arr: string[]) => index !== arr.indexOf(item));
 
 const isRowValid = (row: string[] = []): boolean => !hasDuplicates(getNumbers(row));
+
 const isColumnValid = (column: string[] = []): boolean =>
   !hasDuplicates(getNumbers(column));
+
 const isBoxValid = (box: string[] = []): boolean => !hasDuplicates(getNumbers(box));
 
 export const isValidSudoku = (board: string[][]): boolean => {

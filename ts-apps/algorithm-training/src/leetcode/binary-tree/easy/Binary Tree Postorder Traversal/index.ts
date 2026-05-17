@@ -33,4 +33,4 @@ export const postorderTraversal = (root: TreeNode | null): number[] => {
   return resp;
 };
 
-//accepted
+// accepted

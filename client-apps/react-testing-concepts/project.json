@@ -1,9 +1,0 @@
-{
-  "name": "react-testing-concepts",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "client-apps/react-testing-concepts/src",
-  "projectType": "application",
-  "tags": [],
-  "// targets": "to see all targets run: nx show project react-testing-concepts --web",
-  "targets": {}
-}

@@ -13,6 +13,7 @@ import { rob } from './House Robber';
 import { strStr } from './Implement strStr()';
 import { intersect } from './Intersection of Two Arrays II';
 import { findWords } from './Keyboard Row';
+import { lengthOfLastWord } from './Length of Last Word';
 import { longestCommonPrefix } from './Longest Common Prefix';
 import { maxSubArray } from './Maximum Subarray';
 import {
@@ -39,15 +40,14 @@ import { reverseString } from './Reverse String';
 import { romanToInt } from './Roman to Integer';
 import { rotate } from './Rotate Array';
 import { rotate as rotateImage } from './Rotate Image';
+import { searchInsert } from './Search Insert Position';
 import { singleNumber } from './Single Number';
+import { mySqrt } from './Sqrt(x)';
 import { sumNumbers } from './sum numbers';
 import { twoSum } from './Two Sum';
 import { isAnagram } from './Valid Anagram';
 import { isPalindrome } from './Valid Palindrome';
 import { isValidSudoku } from './Valid Sudoku';
-import { searchInsert } from './Search Insert Position';
-import { lengthOfLastWord } from './Length of Last Word';
-import { mySqrt } from './Sqrt(x)';
 
 export const main = (): void => {
   logger(removeDuplicates, [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2]);

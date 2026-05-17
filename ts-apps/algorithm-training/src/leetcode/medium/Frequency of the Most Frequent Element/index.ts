@@ -34,6 +34,7 @@
 
 const canAlignPrevious = (diff: number, length: number, portion: number): boolean =>
   getDiffPortion(diff, length, portion) >= 0;
+
 const getDiffPortion = (diff: number, length: number, portion: number): number =>
   portion - diff * length;
 

@@ -21,9 +21,7 @@
 //
 // 0 <= x <= 231 - 1
 
-export const mySqrt = (x: number): number => {
-  return Math.floor(Math.sqrt(x));
-};
+export const mySqrt = (x: number): number => Math.floor(Math.sqrt(x));
 
 // accepted
 // We must not use any built-in exponent function or operator.

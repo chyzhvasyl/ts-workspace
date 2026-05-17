@@ -1,7 +1,9 @@
 const areNumbersInRange = (nums: number[]): boolean =>
   nums.some((num) => num <= 100 && num >= -100);
+
 const isNumbersLengthValid = (nums: number[]): boolean =>
   nums.length >= 0 && nums.length <= 3 * 10 ** 4;
+
 const areWithinConstraints = (nums: number[]): boolean =>
   areNumbersInRange(nums) && isNumbersLengthValid(nums);
 

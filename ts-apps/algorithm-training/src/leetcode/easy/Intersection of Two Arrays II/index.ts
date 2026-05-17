@@ -27,6 +27,7 @@
 
 const isLengthValid = (arr: number[] = []): boolean =>
   arr.length > 0 && arr.length <= 1000;
+
 const isValueValid = (arr: number[] = []): boolean =>
   arr.every((num: number) => num > -1 && num < 1000);
 

@@ -21,10 +21,14 @@ dist
 !.vscode/launch.json
 !.vscode/extensions.json
 
-
-
+# Nx
 .nx/cache
 .nx/workspace-data
 vite.config.*.timestamp*
-cypress
+
+# Test artifacts
+**/cypress/screenshots
+**/cypress/videos
+**/cypress/downloads
 test-results
+playwright-report
