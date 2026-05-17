@@ -38,7 +38,10 @@
 
 // Design
 export class MyLinkedList {
-  constructor(public val?: number, public next: MyLinkedList | null = null) {}
+  constructor(
+    public val?: number,
+    public next: MyLinkedList | null = null,
+  ) {}
 
   get(index: number): number | undefined {
     let node: MyLinkedList | null = this.getHead();

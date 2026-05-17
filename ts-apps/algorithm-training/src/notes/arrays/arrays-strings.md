@@ -1,42 +1,34 @@
 Passing FANG interviews, especially for arrays and strings, involves mastering several techniques and tricks. Here are the major ones:
 
 1. **Two-Pointer Technique**:
-
    - Useful for problems involving sorted arrays, like finding pairs or triplets that sum to a specific value.
    - Examples: Two Sum, Three Sum, Container with Most Water.
 
 2. **Sliding Window**:
-
    - Ideal for problems involving subarrays or substrings, often with fixed or dynamic lengths.
    - Examples: Maximum Subarray, Longest Substring Without Repeating Characters.
 
 3. **Hashing**:
-
    - Utilize hash maps to store and retrieve values quickly, particularly useful for problems involving frequency counts or checking for duplicates.
    - Examples: Two Sum, Longest Substring Without Repeating Characters.
 
 4. **Prefix Sum**:
-
    - Helps in efficiently calculating the sum of subarrays.
    - Examples: Subarray Sum Equals K, Range Sum Query.
 
 5. **Sorting**:
-
    - Simplifies problems by imposing an order, making it easier to find patterns or compare elements.
    - Examples: Meeting Rooms, Merge Intervals.
 
 6. **Binary Search**:
-
    - Useful for finding elements in sorted arrays or solving optimization problems.
    - Examples: Find Minimum in Rotated Sorted Array, Search in Rotated Sorted Array.
 
 7. **Dynamic Programming**:
-
    - Applies to problems where you need to make decisions based on previous results, often involving subsequences or substrings.
    - Examples: Longest Increasing Subsequence, Edit Distance.
 
 8. **String Matching Algorithms**:
-
    - Techniques like KMP or Rabin-Karp for efficient substring searches.
    - Examples: Implement strStr(), Find All Anagrams in a String.
 

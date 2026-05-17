@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Bash(cat *)",
+      "Bash(ls *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(nx *)",
+      "Bash(npx *)",
+      "Bash(npm run *)",
+      "Bash(npm test *)",
+      "Bash(npm install *)",
+      "Bash(node *)",
+      "Bash(ts-node *)",
+      "Bash(tsc *)",
+      "Bash(prettier *)",
+      "Bash(eslint *)",
+      "Bash(jest *)",
+      "Bash(vitest *)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(git push *)",
+      "Bash(git commit *)",
+      "Bash(npm publish *)"
+    ]
+  }
+}
