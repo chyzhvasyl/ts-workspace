@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "nx-workspace": {
+      "source": "nrwl/nx-ai-agents-config",
+      "sourceType": "github",
+      "skillPath": "skills/nx-workspace/SKILL.md",
+      "computedHash": "93c1a07cb550b8b85ce62ccd2481073b6ab520be86d1a910686054d8096207a7"
+    }
+  }
+}

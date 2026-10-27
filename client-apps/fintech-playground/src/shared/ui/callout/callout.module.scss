@@ -1,37 +1,44 @@
 .callout {
+  border: 1px solid;
+  border-radius: var(--radius-sm);
   display: flex;
+  font-size: 13px;
   gap: 10px;
   padding: 12px 14px;
-  border-radius: var(--radius-sm);
-  border: 1px solid;
-  font-size: 13px;
 }
+
 .icon {
   flex-shrink: 0;
 }
+
 .title {
   display: block;
   margin-bottom: 2px;
 }
+
 .text {
   color: inherit;
   line-height: 1.55;
 }
+
 .info {
   background: var(--info-soft);
   border-color: #bfdbfe;
   color: #1e40af;
 }
+
 .success {
   background: var(--success-soft);
   border-color: #86efac;
   color: #15803d;
 }
+
 .warning {
   background: var(--warning-soft);
   border-color: #fcd34d;
   color: #92400e;
 }
+
 .danger {
   background: var(--danger-soft);
   border-color: #fca5a5;

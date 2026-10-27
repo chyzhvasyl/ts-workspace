@@ -1,53 +1,63 @@
 .btn {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
+  display: inline-flex;
   font-weight: 600;
+  gap: 6px;
+  justify-content: center;
   transition: all 0.15s;
   white-space: nowrap;
 
   &:disabled {
-    opacity: 0.5;
     cursor: not-allowed;
+    opacity: 0.5;
   }
 }
+
 .sm {
-  padding: 5px 11px;
   font-size: 13px;
+  padding: 5px 11px;
 }
+
 .md {
-  padding: 8px 16px;
   font-size: 14px;
+  padding: 8px 16px;
 }
+
 .primary {
   background: var(--primary);
   color: #fff;
+
   &:hover:not(:disabled) {
     background: var(--primary-hover);
   }
 }
+
 .secondary {
   background: var(--surface);
-  color: var(--text);
   border-color: var(--border-strong);
+  color: var(--text);
+
   &:hover:not(:disabled) {
     background: var(--surface-2);
   }
 }
+
 .ghost {
   background: transparent;
   color: var(--text-muted);
+
   &:hover:not(:disabled) {
     background: var(--surface-2);
     color: var(--text);
   }
 }
+
 .danger {
   background: var(--danger);
   color: #fff;
+
   &:hover:not(:disabled) {
     filter: brightness(0.95);
   }

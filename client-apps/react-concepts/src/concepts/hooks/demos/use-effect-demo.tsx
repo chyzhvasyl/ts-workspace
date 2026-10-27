@@ -55,8 +55,8 @@ useEffect(() => {
         <span className={styles.label}>Зміни userId:</span>
         {['1', '2', '3'].map((id) => (
           <button
-            key={id}
             className={`${styles.btn} ${safeId === id ? styles.active : ''}`}
+            key={id}
             onClick={() => setSafeId(id)}
           >
             User {id}
@@ -76,13 +76,16 @@ useEffect(() => {
 export function UseEffectCleanupDemo() {
   const [userId, setUserId] = useState('1');
   const [data, setData] = useState<string | null>(null);
+
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'aborted'>(
     'idle',
   );
+
   const abortCountRef = useRef(0);
 
   useEffect(() => {
     const controller = new AbortController();
+
     setStatus('loading');
     setData(null);
 
@@ -112,8 +115,8 @@ export function UseEffectCleanupDemo() {
         <span className={styles.label}>User ID:</span>
         {['1', '2', '3', '4'].map((id) => (
           <button
-            key={id}
             className={`${styles.btn} ${userId === id ? styles.active : ''}`}
+            key={id}
             onClick={() => setUserId(id)}
           >
             User {id}

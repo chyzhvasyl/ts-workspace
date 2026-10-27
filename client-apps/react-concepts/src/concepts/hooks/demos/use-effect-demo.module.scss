@@ -6,8 +6,8 @@
 
 .explanation {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 12px;
+  grid-template-columns: 1fr 1fr;
 }
 
 .bad {
@@ -18,9 +18,9 @@
 }
 
 .badTitle {
+  color: #dc2626;
   font-size: 13px;
   font-weight: 700;
-  color: #dc2626;
   margin: 0 0 8px;
 }
 
@@ -32,45 +32,45 @@
 }
 
 .goodTitle {
+  color: #16a34a;
   font-size: 13px;
   font-weight: 700;
-  color: #16a34a;
   margin: 0 0 8px;
 }
 
 .mini {
+  background: rgb(0 0 0 / 4%);
+  border-radius: 6px;
+  color: #374151;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   line-height: 1.7;
-  color: #374151;
-  background: rgba(0, 0, 0, 0.04);
-  border-radius: 6px;
-  padding: 10px;
   overflow-x: auto;
+  padding: 10px;
   white-space: pre;
 }
 
 .controls {
-  display: flex;
   align-items: center;
-  gap: 8px;
+  display: flex;
   flex-wrap: wrap;
+  gap: 8px;
 }
 
 .label {
-  font-size: 13px;
   color: #6b7280;
+  font-size: 13px;
   font-weight: 500;
 }
 
 .btn {
-  padding: 6px 14px;
+  background: white;
   border: 1px solid #d1d5db;
   border-radius: 6px;
-  background: white;
   cursor: pointer;
   font-size: 13px;
   font-weight: 500;
+  padding: 6px 14px;
   transition: all 0.15s;
 
   &:hover {
@@ -79,55 +79,58 @@
 
   &.active {
     background: #2563eb;
-    color: white;
     border-color: #2563eb;
+    color: white;
   }
 }
 
 .result {
-  font-size: 14px;
-  color: #374151;
   background: #f9fafb;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
+  color: #374151;
+  font-size: 14px;
   padding: 10px 14px;
 }
 
 .hint {
-  font-size: 13px;
   color: #6b7280;
+  font-size: 13px;
   margin: 0;
 }
 
 .statusBox {
-  display: flex;
   align-items: center;
-  gap: 10px;
   background: #f9fafb;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 14px;
   color: #374151;
+  display: flex;
+  font-size: 14px;
+  gap: 10px;
+  padding: 12px 16px;
 }
 
 .statusDot {
-  width: 10px;
-  height: 10px;
   border-radius: 50%;
   flex-shrink: 0;
+  height: 10px;
   transition: background 0.3s;
+  width: 10px;
 
   &.dotIdle {
     background: #d1d5db;
   }
+
   &.dotLoading {
-    background: #f59e0b;
     animation: pulse 1s infinite;
+    background: #f59e0b;
   }
+
   &.dotSuccess {
     background: #22c55e;
   }
+
   &.dotAborted {
     background: #ef4444;
   }
@@ -138,6 +141,7 @@
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.4;
   }

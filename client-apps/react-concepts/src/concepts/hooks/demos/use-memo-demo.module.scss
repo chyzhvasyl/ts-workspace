@@ -5,57 +5,57 @@
 }
 
 .hint {
-  font-size: 13px;
   color: #6b7280;
-  margin: 0;
+  font-size: 13px;
   line-height: 1.6;
+  margin: 0;
 
   code {
     background: #f3f4f6;
     border: 1px solid #e5e7eb;
     border-radius: 3px;
-    padding: 1px 5px;
+    color: #374151;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
-    color: #374151;
+    padding: 1px 5px;
   }
 }
 
 .controls {
-  display: flex;
-  gap: 12px;
   align-items: center;
+  display: flex;
   flex-wrap: wrap;
+  gap: 12px;
 }
 
 .input {
-  flex: 1;
-  min-width: 180px;
-  padding: 10px 14px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
+  flex: 1;
   font-size: 14px;
+  min-width: 180px;
   outline: none;
+  padding: 10px 14px;
 
   &:focus {
     border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 0 3px rgb(37 99 235 / 10%);
   }
 }
 
 .aside {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 10px;
 }
 
 .btn {
-  padding: 8px 14px;
+  background: white;
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  background: white;
-  font-size: 13px;
   cursor: pointer;
+  font-size: 13px;
+  padding: 8px 14px;
   white-space: nowrap;
 
   &:hover {
@@ -64,28 +64,28 @@
 }
 
 .result {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
   background: #f9fafb;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 14px;
   color: #374151;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 6px;
+  padding: 12px 16px;
 }
 
 .resultItems {
+  color: #6b7280;
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
-  color: #6b7280;
   word-break: break-all;
 }
 
 .comparison {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 12px;
+  grid-template-columns: 1fr 1fr;
 }
 
 .noMemo {
@@ -95,14 +95,14 @@
   padding: 14px;
 
   pre {
+    background: rgb(0 0 0 / 4%);
+    border-radius: 4px;
+    color: #374151;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     line-height: 1.7;
-    color: #374151;
-    background: rgba(0, 0, 0, 0.04);
-    border-radius: 4px;
-    padding: 8px;
     overflow-x: auto;
+    padding: 8px;
     white-space: pre;
   }
 }
@@ -114,21 +114,21 @@
   padding: 14px;
 
   pre {
+    background: rgb(0 0 0 / 4%);
+    border-radius: 4px;
+    color: #374151;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     line-height: 1.7;
-    color: #374151;
-    background: rgba(0, 0, 0, 0.04);
-    border-radius: 4px;
-    padding: 8px;
     overflow-x: auto;
+    padding: 8px;
     white-space: pre;
   }
 }
 
 .colTitle {
+  color: #111827;
   font-size: 13px;
   font-weight: 700;
   margin: 0 0 8px;
-  color: #111827;
 }

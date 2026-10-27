@@ -1,11 +1,12 @@
-import { CSSProperties, useMemo, useState } from 'react';
+import type { CSSProperties } from 'react';
+import { useMemo, useState } from 'react';
 
-import { money } from '../../shared/domain/money';
 import { sampleTransactions } from '../../shared/domain/mock-api';
-import { Transaction, TransactionStatus } from '../../shared/domain/types';
+import { money } from '../../shared/domain/money';
+import type { Transaction, TransactionStatus } from '../../shared/domain/types';
+import type { Column, Tone } from '../../shared/ui';
 import {
   Card,
-  Column,
   Field,
   Money,
   RenderCount,
@@ -14,9 +15,10 @@ import {
   StatusPill,
   Table,
   TextInput,
-  Tone,
 } from '../../shared/ui';
-import { applyFilters, ExplorerFilters, summarize } from './filter-transactions';
+
+import type { ExplorerFilters } from './filter-transactions';
+import { applyFilters, summarize } from './filter-transactions';
 
 const STATUS_TONE: Record<TransactionStatus, Tone> = {
   approved: 'success',
@@ -59,6 +61,7 @@ export function TransactionsExplorer() {
     () => applyFilters(sampleTransactions, { query, status, sortBy, sortDir }),
     [query, status, sortBy, sortDir],
   );
+
   const summary = useMemo(() => summarize(filtered), [filtered]);
 
   const columns: Column<Transaction>[] = [
@@ -99,15 +102,15 @@ export function TransactionsExplorer() {
       </div>
 
       <Card
-        title="Транзакції"
         actions={
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <RenderCount label="Render" />
-            <button onClick={() => forceRender((n) => n + 1)} style={btn}>
+            <button style={btn} onClick={() => forceRender((n) => n + 1)}>
               ⟳ Re-render
             </button>
           </div>
         }
+        title="Транзакції"
       >
         <div
           style={{
@@ -119,31 +122,31 @@ export function TransactionsExplorer() {
         >
           <Field label="Пошук">
             <TextInput
-              value={query}
               placeholder="id, email або країна"
+              value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
           </Field>
           <Field label="Статус">
             <Select
-              value={status}
               options={STATUS_OPTIONS}
-              onValueChange={(v) => setStatus(v as ExplorerFilters['status'])}
+              value={status}
+              onValueChange={(v) => setStatus(v)}
             />
           </Field>
           <Field label="Сортування">
             <Select
-              value={sort}
               options={SORT_OPTIONS}
-              onValueChange={(v) => setSort(v as typeof sort)}
+              value={sort}
+              onValueChange={(v) => setSort(v)}
             />
           </Field>
         </div>
         <Table
           columns={columns}
-          rows={filtered}
-          rowKey={(t) => t.id}
           empty="Нічого не знайдено"
+          rowKey={(t) => t.id}
+          rows={filtered}
         />
       </Card>
     </>

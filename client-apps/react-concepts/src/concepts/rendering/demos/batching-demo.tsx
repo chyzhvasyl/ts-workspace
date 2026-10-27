@@ -8,8 +8,8 @@ export function BatchingDemo() {
   const [count, setCount] = useState(0);
   const [name, setName] = useState('Vasyl');
   const [loading, setLoading] = useState(false);
-
   const renderRef = useRef(0);
+
   renderRef.current++;
 
   const handleBatched = () => {

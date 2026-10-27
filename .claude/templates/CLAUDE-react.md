@@ -2,7 +2,7 @@
 
 ## Stack
 
-React 19, TypeScript 5.8+ strict, Vite 6, SCSS modules, React Router 7, Vitest + Testing Library.
+React 19, TypeScript 6.0 strict, Vite 8, SCSS modules, React Router 7, Vitest + Testing Library.
 
 ## Rules
 

@@ -9,7 +9,9 @@ interface RenderCountProps {
 /** Increments every render — handy to *see* re-renders in perf tasks. */
 export function RenderCount({ label = 'Renders' }: RenderCountProps) {
   const count = useRef(0);
+
   count.current++;
+
   return (
     <span className={styles.count}>
       {label}: <strong>{count.current}</strong>

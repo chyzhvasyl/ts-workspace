@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { TASKS } from '../tasks/registry';
+
 import styles from './home-page.module.scss';
 
 const DIFF_LABEL: Record<string, string> = {
@@ -27,7 +28,7 @@ export function HomePage() {
           <span>·</span>
           <span>🧪 Vitest</span>
           <span>·</span>
-          <Link to="/guide" className={styles.guideLink}>
+          <Link className={styles.guideLink} to="/guide">
             📚 Гайд до співбесіди →
           </Link>
         </div>
@@ -35,7 +36,7 @@ export function HomePage() {
 
       <div className={styles.grid}>
         {TASKS.map((t) => (
-          <Link key={t.meta.id} to={t.path} className={styles.card}>
+          <Link className={styles.card} key={t.meta.id} to={t.path}>
             <div className={styles.cardHead}>
               <span className={styles.order}>
                 {String(t.meta.order).padStart(2, '0')}
@@ -48,7 +49,7 @@ export function HomePage() {
             <p className={styles.cardDesc}>{t.meta.summary}</p>
             <div className={styles.tags}>
               {t.meta.concepts.slice(0, 3).map((c) => (
-                <span key={c} className={styles.tag}>
+                <span className={styles.tag} key={c}>
                   {c}
                 </span>
               ))}

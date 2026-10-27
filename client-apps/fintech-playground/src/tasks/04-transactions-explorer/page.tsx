@@ -1,4 +1,5 @@
 import { TaskPage } from '../../pages/task-page';
+
 import { TransactionsExplorer } from './transactions-explorer';
 
 export const meta = {
@@ -20,6 +21,16 @@ export const meta = {
 export function TransactionsExplorerPage() {
   return (
     <TaskPage
+      acceptance={[
+        'Пошук фільтрує по id/email/country без урахування регістру.',
+        'Сортування за датою і сумою в обидва боки.',
+        'Кнопка “Re-render” збільшує лічильник, але НЕ перераховує фільтр (правильні deps).',
+      ]}
+      hints={[
+        'useMemo(fn, deps) кешує результат, поки deps незмінні.',
+        'Передчасна оптимізація — зло, але фільтр+сорт по списку — валідний кейс для memo.',
+        'Хочеш побачити вигоду memo? Виведи console.log усередині applyFilters і потисни Re-render.',
+      ]}
       meta={meta}
       requirements={[
         <>
@@ -33,16 +44,6 @@ export function TransactionsExplorerPage() {
           Переконайся, що обчислення обгорнуті в <code>useMemo</code> з правильними
           залежностями.
         </>,
-      ]}
-      acceptance={[
-        'Пошук фільтрує по id/email/country без урахування регістру.',
-        'Сортування за датою і сумою в обидва боки.',
-        'Кнопка “Re-render” збільшує лічильник, але НЕ перераховує фільтр (правильні deps).',
-      ]}
-      hints={[
-        'useMemo(fn, deps) кешує результат, поки deps незмінні.',
-        'Передчасна оптимізація — зло, але фільтр+сорт по списку — валідний кейс для memo.',
-        'Хочеш побачити вигоду memo? Виведи console.log усередині applyFilters і потисни Re-render.',
       ]}
     >
       <TransactionsExplorer />

@@ -2,7 +2,7 @@
 
 ## Stack
 
-NestJS 11, TypeScript 5.8+ strict (decorators enabled), Express, class-validator, Swagger, Jest.
+NestJS 11, TypeScript 6.0 strict (decorators enabled), Express, class-validator, Swagger, Jest.
 
 ## Rules
 

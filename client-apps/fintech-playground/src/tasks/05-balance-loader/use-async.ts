@@ -1,4 +1,4 @@
-import { DependencyList } from 'react';
+import type { DependencyList } from 'react';
 
 export interface AsyncState<T> {
   status: 'idle' | 'loading' | 'success' | 'error';

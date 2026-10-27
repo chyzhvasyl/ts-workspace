@@ -1,4 +1,5 @@
-import { Component, ErrorInfo, ReactNode } from 'react';
+import type { ErrorInfo, ReactNode } from 'react';
+import { Component } from 'react';
 
 interface Props {
   children: ReactNode;
@@ -50,6 +51,7 @@ export class TaskErrorBoundary extends Component<Props, State> {
         </div>
       );
     }
+
     return this.props.children;
   }
 }
@@ -61,6 +63,7 @@ const wrap = {
   textAlign: 'center' as const,
   padding: '80px 32px',
 };
+
 const code = {
   marginTop: 16,
   background: '#1e1e2e',

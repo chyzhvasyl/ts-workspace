@@ -60,8 +60,6 @@
 //
 // [1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-
 class _Node {
   val: number;
 

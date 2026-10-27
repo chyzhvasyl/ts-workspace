@@ -34,7 +34,7 @@ export const singleNumber = (nums: number[] = []): number | void => {
 
   const sorted = nums.sort();
 
-  for (let i = 0; i < nums.length; ) {
+  for (let i = 0; i < nums.length;) {
     if (sorted[i] !== sorted[i + 1]) {
       return sorted[i];
     }

@@ -29,6 +29,7 @@ const LOCALE: Record<Currency, string> = {
 /** Build a Money value from a major-unit number, e.g. money(10.99, 'USD'). */
 export function money(major: number, currency: Currency = 'USD'): Money {
   const factor = 10 ** FRACTION_DIGITS[currency];
+
   return { amountMinor: Math.round(major * factor), currency };
 }
 

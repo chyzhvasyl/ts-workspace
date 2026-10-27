@@ -1,4 +1,4 @@
-import { Currency } from '../../shared/domain/money';
+import type { Currency } from '../../shared/domain/money';
 
 export interface PayoutForm {
   amountMajor: number | '';

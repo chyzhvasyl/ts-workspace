@@ -1,26 +1,29 @@
 .tabs {
-  display: inline-flex;
-  gap: 2px;
-  padding: 3px;
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
 }
+
 .tab {
-  border: none;
   background: transparent;
-  padding: 6px 14px;
+  border: none;
+  border-radius: 5px;
+  color: var(--text-muted);
   font-size: 13px;
   font-weight: 600;
-  color: var(--text-muted);
-  border-radius: 5px;
+  padding: 6px 14px;
   transition: all 0.15s;
+
   &:hover {
     color: var(--text);
   }
 }
+
 .active {
   background: var(--surface);
-  color: var(--text);
   box-shadow: var(--shadow);
+  color: var(--text);
 }

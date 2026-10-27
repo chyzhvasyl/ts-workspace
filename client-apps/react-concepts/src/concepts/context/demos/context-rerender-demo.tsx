@@ -19,6 +19,7 @@ const BigContext = createContext<BigContextValue>({
 
 function HeaderBad() {
   const { user } = useContext(BigContext); // читає тільки user
+
   return (
     <div className={styles.consumer}>
       <span>👤 Header: {user}</span>
@@ -29,6 +30,7 @@ function HeaderBad() {
 
 function CartBad() {
   const { cartCount } = useContext(BigContext); // читає тільки cartCount
+
   return (
     <div className={styles.consumer}>
       <span>🛒 Cart: {cartCount}</span>
@@ -39,6 +41,7 @@ function CartBad() {
 
 function ThemeBad() {
   const { theme } = useContext(BigContext); // читає тільки theme
+
   return (
     <div className={styles.consumer}>
       <span>🎨 Theme: {theme}</span>
@@ -86,6 +89,7 @@ const CartContext = createContext(0);
 
 function HeaderGood() {
   const user = useContext(UserContext); // підписаний тільки на UserContext
+
   return (
     <div className={styles.consumer}>
       <span>👤 Header: {user}</span>
@@ -96,6 +100,7 @@ function HeaderGood() {
 
 function CartGood() {
   const cartCount = useContext(CartContext); // підписаний тільки на CartContext
+
   return (
     <div className={styles.consumer}>
       <span>🛒 Cart: {cartCount}</span>
@@ -106,6 +111,7 @@ function CartGood() {
 
 function ThemeGood() {
   const theme = useContext(ThemeContext); // підписаний тільки на ThemeContext
+
   return (
     <div className={styles.consumer}>
       <span>🎨 Theme: {theme}</span>

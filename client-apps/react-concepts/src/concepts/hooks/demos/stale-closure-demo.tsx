@@ -9,7 +9,7 @@ export function StaleClosureDemo() {
 
   // ─── Проблема: stale closure ───────────────────────────────────────────────
   // count тут замкнутий в момент створення callback
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   const handleBad = useCallback(() => {
     // count тут завжди 0 (або значення при першому render)
     // бо deps масив порожній — callback не перестворюється!
@@ -24,7 +24,9 @@ export function StaleClosureDemo() {
   const handleGood = useCallback(() => {
     setCount((prev) => {
       const next = prev + 1;
+
       setLogGood((l) => [...l.slice(-4), `prev=${prev} → next=${next} ✓`]);
+
       return next;
     });
   }, []); // deps пустий — і це правильно, бо не використовуємо count напряму
@@ -49,7 +51,7 @@ export function StaleClosureDemo() {
           <div className={styles.log}>
             {logBad.length === 0 && <span className={styles.logEmpty}>Лог порожній</span>}
             {logBad.map((entry, i) => (
-              <div key={i} className={styles.logEntry}>
+              <div className={styles.logEntry} key={i}>
                 {entry}
               </div>
             ))}
@@ -69,7 +71,7 @@ export function StaleClosureDemo() {
               <span className={styles.logEmpty}>Лог порожній</span>
             )}
             {logGood.map((entry, i) => (
-              <div key={i} className={styles.logEntry}>
+              <div className={styles.logEntry} key={i}>
                 {entry}
               </div>
             ))}

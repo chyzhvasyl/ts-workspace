@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import styles from './task-page.module.scss';
 
@@ -47,7 +47,7 @@ export function TaskPage({
         <p className={styles.summary}>{meta.summary}</p>
         <div className={styles.tags}>
           {meta.concepts.map((c) => (
-            <span key={c} className={styles.tag}>
+            <span className={styles.tag} key={c}>
               {c}
             </span>
           ))}

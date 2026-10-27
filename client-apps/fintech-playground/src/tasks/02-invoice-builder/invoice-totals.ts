@@ -1,5 +1,6 @@
-import { Money, zero } from '../../shared/domain/money';
-import { Invoice } from '../../shared/domain/types';
+import type { Money } from '../../shared/domain/money';
+import { zero } from '../../shared/domain/money';
+import type { Invoice } from '../../shared/domain/types';
 
 export interface InvoiceTotals {
   subtotal: Money; // sum of qty * unitPrice

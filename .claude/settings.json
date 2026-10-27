@@ -1,4 +1,7 @@
 {
+  "env": {
+    "OPENSPEC_TELEMETRY": "0"
+  },
   "permissions": {
     "allow": [
       "Read",
@@ -15,6 +18,7 @@
       "Bash(npm run *)",
       "Bash(npm test *)",
       "Bash(npm install *)",
+      "Bash(openspec *)",
       "Bash(node *)",
       "Bash(ts-node *)",
       "Bash(tsc *)",
@@ -27,7 +31,8 @@
       "Bash(rm -rf /)",
       "Bash(git push *)",
       "Bash(git commit *)",
-      "Bash(npm publish *)"
+      "Bash(npm publish *)",
+      "mcp__playwright__browser_run_code_unsafe"
     ]
   }
 }

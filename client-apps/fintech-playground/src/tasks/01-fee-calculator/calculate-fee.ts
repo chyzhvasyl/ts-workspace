@@ -1,5 +1,6 @@
-import { Money, TieredCommission } from '../../shared/domain/money';
-import { CommissionRule, CommissionTier } from '../../shared/domain/types';
+import type { Money } from '../../shared/domain/money';
+import { TieredCommission } from '../../shared/domain/money';
+import type { CommissionRule, CommissionTier } from '../../shared/domain/types';
 
 const calculatePercentageFee = (amount: Money, rateBps: number): number =>
   (amount.amountMinor * rateBps) / 10_000;
@@ -16,7 +17,7 @@ const calculatePercentagePlusFixed = (
 const calculateTieredFee = (amount: Money, tiers: CommissionTier[]): number => {
   let maxTier = tiers[0];
 
-  for (let tier of tiers) {
+  for (const tier of tiers) {
     if (maxTier.fromMinor <= amount.amountMinor && tier.fromMinor > maxTier.fromMinor) {
       maxTier = tier;
     }

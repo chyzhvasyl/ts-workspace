@@ -1,4 +1,5 @@
 import { TaskPage } from '../../pages/task-page';
+
 import { InvoiceBuilder } from './invoice-builder';
 
 export const meta = {
@@ -20,6 +21,16 @@ export const meta = {
 export function InvoiceBuilderPage() {
   return (
     <TaskPage
+      acceptance={[
+        'Додавання/видалення/редагування рядка працює і не мутує попередній стан.',
+        'Підсумки перераховуються миттєво.',
+        'Усі 3 юніт-тести computeTotals — зелені.',
+      ]}
+      hints={[
+        'map повертає НОВИЙ масив; для update — map з тернаром по id.',
+        'filter для видалення, [...prev, newLine()] для додавання.',
+        'Чому immutability? React порівнює посилання (Object.is). Мутація = пропущений ре-рендер.',
+      ]}
       meta={meta}
       requirements={[
         <>
@@ -34,16 +45,6 @@ export function InvoiceBuilderPage() {
           Запусти тест: <code>nx test fintech-playground</code> —{' '}
           <code>invoice-totals.spec.ts</code> має пройти.
         </>,
-      ]}
-      acceptance={[
-        'Додавання/видалення/редагування рядка працює і не мутує попередній стан.',
-        'Підсумки перераховуються миттєво.',
-        'Усі 3 юніт-тести computeTotals — зелені.',
-      ]}
-      hints={[
-        'map повертає НОВИЙ масив; для update — map з тернаром по id.',
-        'filter для видалення, [...prev, newLine()] для додавання.',
-        'Чому immutability? React порівнює посилання (Object.is). Мутація = пропущений ре-рендер.',
       ]}
     >
       <InvoiceBuilder />

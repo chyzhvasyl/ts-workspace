@@ -1,11 +1,8 @@
+import type { Currency } from '../../shared/domain/money';
 import { Card, RenderCount, Select, Toggle } from '../../shared/ui';
-import {
-  RoundingMode,
-  SettingsProvider,
-  useSettings,
-  useSettingsActions,
-} from './settings-context';
-import { Currency } from '../../shared/domain/money';
+
+import type { RoundingMode } from './settings-context';
+import { SettingsProvider, useSettings, useSettingsActions } from './settings-context';
 
 const CURRENCIES = [
   { value: 'USD', label: 'USD' },
@@ -22,34 +19,35 @@ const ROUNDING = [
 /** Consumes ACTIONS only → must NOT re-render when settings change. */
 function ControlsPanel() {
   const { setCurrency, setRounding, toggleFeesInclusive, reset } = useSettingsActions();
+
   return (
     <Card
-      title="Контроли (тільки actions)"
       actions={<RenderCount label="Controls render" />}
+      title="Контроли (тільки actions)"
     >
       <div style={{ display: 'grid', gap: 14, maxWidth: 280 }}>
         <Select
-          value={'USD'}
           options={CURRENCIES}
-          onValueChange={(v) => setCurrency(v as Currency)}
+          value={'USD'}
+          onValueChange={(v) => setCurrency(v)}
         />
         <Select
-          value={'half_up'}
           options={ROUNDING}
-          onValueChange={(v) => setRounding(v as RoundingMode)}
+          value={'half_up'}
+          onValueChange={(v) => setRounding(v)}
         />
         <Toggle
           checked={false}
-          onCheckedChange={() => toggleFeesInclusive()}
           label="Fees inclusive"
+          onCheckedChange={() => toggleFeesInclusive()}
         />
         <button
-          onClick={reset}
           style={{
             padding: '6px 12px',
             borderRadius: 6,
             border: '1px solid var(--border-strong)',
           }}
+          onClick={reset}
         >
           Reset
         </button>
@@ -61,8 +59,9 @@ function ControlsPanel() {
 /** Consumes STATE → re-renders when settings change (expected). */
 function PreviewPanel() {
   const s = useSettings();
+
   return (
-    <Card title="Превʼю (читає state)" actions={<RenderCount label="Preview render" />}>
+    <Card actions={<RenderCount label="Preview render" />} title="Превʼю (читає state)">
       <pre style={{ fontSize: 13 }}>{JSON.stringify(s, null, 2)}</pre>
     </Card>
   );

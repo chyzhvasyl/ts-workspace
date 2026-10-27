@@ -1,4 +1,4 @@
-import { useState, useDeferredValue, memo } from 'react';
+import { memo, useDeferredValue, useState } from 'react';
 
 // ---------------------------------------------------------------------------
 // Імітація дорогого рендеру — великий список результатів
@@ -7,6 +7,7 @@ const ResultsList = memo(function ResultsList({ query }: { query: string }) {
   // Штучне гальмування — імітує дорогий рендер (150ms блокування main thread)
   // Без useDeferredValue інпут би "підвисав" при кожному символі
   const start = performance.now();
+
   while (performance.now() - start < 500) {
     /* навантаження */
   }
@@ -29,10 +30,10 @@ const ResultsList = memo(function ResultsList({ query }: { query: string }) {
 // ---------------------------------------------------------------------------
 export function UseDeferredValueDemo() {
   const [query, setQuery] = useState('');
-
   // query     — миттєво оновлюється (інпут не гальмує)
   // deferredQuery — React оновить коли буде вільний (список може "відставати")
   const deferredQuery = useDeferredValue(query);
+
   console.log('deferredQuery', deferredQuery);
 
   // Поки deferredQuery не наздогнав query — список "застарів"
@@ -46,8 +47,6 @@ export function UseDeferredValueDemo() {
       </p>
 
       <input
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
         placeholder="Шукай..."
         style={{
           width: '100%',
@@ -55,6 +54,8 @@ export function UseDeferredValueDemo() {
           fontSize: 15,
           boxSizing: 'border-box',
         }}
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
       />
 
       {/* Індикатор stale-стану */}

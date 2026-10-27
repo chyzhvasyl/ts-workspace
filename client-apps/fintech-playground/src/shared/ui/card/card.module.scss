@@ -5,33 +5,39 @@
   box-shadow: var(--shadow);
   overflow: hidden;
 }
+
 .head {
-  display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 16px 20px;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 16px 20px;
 }
+
 .title {
   font-size: 15px;
   font-weight: 700;
 }
+
 .subtitle {
-  font-size: 13px;
   color: var(--text-muted);
+  font-size: 13px;
   margin-top: 2px;
 }
+
 .actions {
   display: flex;
-  gap: 8px;
   flex-shrink: 0;
+  gap: 8px;
 }
+
 .body {
   padding: 20px;
 }
+
 .footer {
-  padding: 14px 20px;
-  border-top: 1px solid var(--border);
   background: var(--surface-2);
+  border-top: 1px solid var(--border);
+  padding: 14px 20px;
 }

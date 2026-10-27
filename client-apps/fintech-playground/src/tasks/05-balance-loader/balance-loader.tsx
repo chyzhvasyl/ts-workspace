@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 
 import { mockApi } from '../../shared/domain/mock-api';
-import { Balance } from '../../shared/domain/types';
+import type { Balance } from '../../shared/domain/types';
 import {
   Button,
   Callout,
@@ -13,6 +13,7 @@ import {
   Stat,
   Toggle,
 } from '../../shared/ui';
+
 import { useAsync } from './use-async';
 
 const MERCHANTS = [
@@ -42,41 +43,41 @@ export function BalanceLoader() {
   return (
     <>
       <Card
-        title="Налаштування завантаження"
         subtitle="Швидко перемикай мерчанта — стейл-відповіді не мають перетирати свіжі"
+        title="Налаштування завантаження"
       >
         <div
           style={{ display: 'flex', gap: 20, flexWrap: 'wrap', alignItems: 'flex-end' }}
         >
           <Field label="Мерчант">
             <Select
-              value={merchantId}
               options={MERCHANTS}
+              value={merchantId}
               onValueChange={setMerchantId}
             />
           </Field>
           <Toggle
             checked={slow}
-            onCheckedChange={setSlow}
             label="Повільна мережа (1.2s)"
+            onCheckedChange={setSlow}
           />
           <Toggle
             checked={forceFail}
-            onCheckedChange={setForceFail}
             label="Симулювати помилку"
+            onCheckedChange={setForceFail}
           />
         </div>
       </Card>
 
-      <Card title="Баланси" subtitle={`Стан: ${status}`}>
+      <Card subtitle={`Стан: ${status}`} title="Баланси">
         {status === 'loading' && <Spinner label="Завантаження балансів…" />}
         {status === 'error' && (
-          <Callout tone="danger" title="Помилка запиту">
+          <Callout title="Помилка запиту" tone="danger">
             {error?.message ?? 'unknown'} — обробка помилки працює ✅
           </Callout>
         )}
         {status === 'idle' && (
-          <Callout tone="info" title="Хук ще не реалізовано">
+          <Callout title="Хук ще не реалізовано" tone="info">
             Реалізуй <code>useAsync</code> у <code>use-async.ts</code>, щоб побачити дані.
           </Callout>
         )}
@@ -90,21 +91,21 @@ export function BalanceLoader() {
           >
             {data.map((b) => (
               <Stat
-                key={b.currency}
-                label={`${b.currency} available`}
-                value={<Money value={b.available} />}
                 hint={
                   <>
                     pending <Money value={b.pending} />
                   </>
                 }
+                key={b.currency}
+                label={`${b.currency} available`}
+                value={<Money value={b.available} />}
               />
             ))}
           </div>
         )}
       </Card>
 
-      <Callout tone="info" title="Перевір race condition">
+      <Callout title="Перевір race condition" tone="info">
         Увімкни повільну мережу і швидко клацай між мерчантами. Якщо <code>useAsync</code>{' '}
         правильний — покажеться відповідь ОСТАННЬОГО вибору, а не та, що приїхала пізніше.
         Кнопка нижче розмонтовує компонент (тест cleanup).
@@ -116,9 +117,10 @@ export function BalanceLoader() {
 
 function UnmountProbe() {
   const [mounted, setMounted] = useState(true);
+
   return (
     <div>
-      <Button variant="secondary" size="sm" onClick={() => setMounted((m) => !m)}>
+      <Button size="sm" variant="secondary" onClick={() => setMounted((m) => !m)}>
         {mounted ? 'Розмонтувати під час завантаження' : 'Змонтувати знову'}
       </Button>
       {!mounted && (

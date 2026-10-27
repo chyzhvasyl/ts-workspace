@@ -5,32 +5,32 @@
 }
 
 .counter {
-  display: flex;
   align-items: center;
-  gap: 12px;
-  justify-content: center;
-  padding: 16px;
   background: #f9fafb;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 16px;
 }
 
 .countLabel {
-  font-size: 14px;
   color: #6b7280;
+  font-size: 14px;
 }
 
 .countValue {
-  font-size: 40px;
-  font-weight: 800;
   color: #111827;
+  font-size: 40px;
   font-variant-numeric: tabular-nums;
+  font-weight: 800;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 12px;
+  grid-template-columns: 1fr 1fr;
 }
 
 .col {
@@ -40,34 +40,34 @@
 }
 
 .colTitle {
+  color: #111827;
   font-size: 13px;
   font-weight: 700;
-  color: #111827;
   margin: 0;
 }
 
 .colHint {
-  font-size: 12px;
   color: #6b7280;
-  margin: 0;
+  font-size: 12px;
   line-height: 1.5;
+  margin: 0;
 
   code {
+    background: #f3f4f6;
+    border-radius: 3px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    background: #f3f4f6;
     padding: 1px 4px;
-    border-radius: 3px;
   }
 }
 
 .btn {
-  padding: 9px 16px;
   border: none;
   border-radius: 8px;
+  cursor: pointer;
   font-size: 13px;
   font-weight: 600;
-  cursor: pointer;
+  padding: 9px 16px;
   transition: all 0.15s;
 }
 
@@ -101,12 +101,12 @@
 
 .btnReset {
   align-self: flex-start;
-  padding: 6px 14px;
+  background: white;
   border: 1px solid #d1d5db;
   border-radius: 6px;
-  background: white;
-  font-size: 12px;
   cursor: pointer;
+  font-size: 12px;
+  padding: 6px 14px;
 
   &:hover {
     background: #f3f4f6;
@@ -116,23 +116,23 @@
 .log {
   background: #1e1e2e;
   border-radius: 6px;
-  padding: 10px;
-  min-height: 80px;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-height: 80px;
+  padding: 10px;
 }
 
 .logEmpty {
-  font-size: 12px;
   color: #6c7086;
   font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
 }
 
 .logEntry {
-  font-size: 11px;
-  font-family: 'JetBrains Mono', monospace;
   color: #cdd6f4;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
   line-height: 1.5;
 }
 
@@ -142,17 +142,17 @@
 }
 
 .hint {
-  font-size: 13px;
   color: #6b7280;
-  margin: 0;
+  font-size: 13px;
   line-height: 1.6;
+  margin: 0;
 
   code {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
     background: #f3f4f6;
-    padding: 1px 5px;
     border-radius: 3px;
     color: #374151;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    padding: 1px 5px;
   }
 }

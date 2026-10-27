@@ -21,11 +21,11 @@ export function UseRefDomDemo() {
       </p>
       <div className={styles.row}>
         <input
-          ref={inputRef}
           className={`${styles.input} ${focused ? styles.inputFocused : ''}`}
           placeholder="Клікни кнопку →"
-          onFocus={() => setFocused(true)}
+          ref={inputRef}
           onBlur={() => setFocused(false)}
+          onFocus={() => setFocused(true)}
         />
         <button className={styles.btn} onClick={focusInput}>
           🎯 Focus
@@ -43,6 +43,7 @@ export function UseRefMutableDemo() {
 
   const start = () => {
     if (intervalRef.current !== null) return;
+
     // Зберігаємо id в ref — БЕЗ ре-рендеру
     intervalRef.current = setInterval(() => {
       setCount((c) => c + 1); // setCount викликає ре-рендер щосекунди
@@ -55,6 +56,7 @@ export function UseRefMutableDemo() {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
+
     setRunning(false);
   };
 
@@ -81,15 +83,15 @@ export function UseRefMutableDemo() {
         <div className={styles.btns}>
           <button
             className={`${styles.btn} ${styles.btnStart}`}
-            onClick={start}
             disabled={running}
+            onClick={start}
           >
             ▶ Start
           </button>
           <button
             className={`${styles.btn} ${styles.btnStop}`}
-            onClick={stop}
             disabled={!running}
+            onClick={stop}
           >
             ⏸ Stop
           </button>

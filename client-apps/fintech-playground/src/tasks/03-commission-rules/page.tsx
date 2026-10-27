@@ -1,4 +1,5 @@
 import { TaskPage } from '../../pages/task-page';
+
 import { CommissionRules } from './commission-rules';
 
 export const meta = {
@@ -20,6 +21,17 @@ export const meta = {
 export function CommissionRulesPage() {
   return (
     <TaskPage
+      acceptance={[
+        'Додавання рівня додає рядок; видалення прибирає правильний.',
+        'Зміна ставки/межі оновлює лише потрібний рівень.',
+        'Reset повертає initialRulesState.',
+        'Якщо прибрати один case — TypeScript підсвічує помилку через never.',
+      ]}
+      hints={[
+        'reducer: (state, action) => newState. Чиста функція, без side-effects.',
+        'Для update по index: state.tiers.map((t,i) => i===index ? {...t, rateBps} : t).',
+        'never-перевірка: const _exhaustive: never = action; — TS впаде, якщо є непокритий тип.',
+      ]}
       meta={meta}
       requirements={[
         <>
@@ -33,17 +45,6 @@ export function CommissionRulesPage() {
           Зроби <code>switch</code> вичерпним: додай гілку <code>default</code> з
           перевіркою <code>never</code>.
         </>,
-      ]}
-      acceptance={[
-        'Додавання рівня додає рядок; видалення прибирає правильний.',
-        'Зміна ставки/межі оновлює лише потрібний рівень.',
-        'Reset повертає initialRulesState.',
-        'Якщо прибрати один case — TypeScript підсвічує помилку через never.',
-      ]}
-      hints={[
-        'reducer: (state, action) => newState. Чиста функція, без side-effects.',
-        'Для update по index: state.tiers.map((t,i) => i===index ? {...t, rateBps} : t).',
-        'never-перевірка: const _exhaustive: never = action; — TS впаде, якщо є непокритий тип.',
       ]}
     >
       <CommissionRules />

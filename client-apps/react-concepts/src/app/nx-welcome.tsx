@@ -1,4 +1,4 @@
-/* eslint-disable react/no-danger, jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /*
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  This is a starter component and can be deleted.

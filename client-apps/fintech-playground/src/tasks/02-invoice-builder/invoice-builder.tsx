@@ -1,20 +1,22 @@
 import { useState } from 'react';
 
 import { money } from '../../shared/domain/money';
-import { Invoice, InvoiceLineItem } from '../../shared/domain/types';
+import type { Invoice, InvoiceLineItem } from '../../shared/domain/types';
+import type { Column } from '../../shared/ui';
 import {
   Button,
   Card,
-  Column,
   Money,
   NumberInput,
   Stat,
   Table,
   TextInput,
 } from '../../shared/ui';
+
 import { computeTotals } from './invoice-totals';
 
 let nextId = 100;
+
 const newLine = (): InvoiceLineItem => ({
   id: `li_${nextId++}`,
   description: '',
@@ -40,9 +42,11 @@ export function InvoiceBuilder() {
   const addLineItem = () => {
     // TODO: append newLine() to lineItems
   };
+
   const removeLineItem = (id: string) => {
     // TODO: drop the item with this id
   };
+
   const updateLineItem = (id: string, patch: Partial<InvoiceLineItem>) => {
     // TODO: replace the matching item with { ...item, ...patch }
   };
@@ -54,6 +58,7 @@ export function InvoiceBuilder() {
     taxRatePct: typeof taxRatePct === 'number' ? taxRatePct : 0,
     lineItems,
   };
+
   const totals = computeTotals(invoice);
 
   const columns: Column<InvoiceLineItem>[] = [
@@ -62,8 +67,8 @@ export function InvoiceBuilder() {
       header: 'Опис',
       render: (li) => (
         <TextInput
-          value={li.description}
           placeholder="Назва позиції"
+          value={li.description}
           onChange={(e) => updateLineItem(li.id, { description: e.target.value })}
         />
       ),
@@ -74,8 +79,8 @@ export function InvoiceBuilder() {
       width: '90px',
       render: (li) => (
         <NumberInput
-          value={li.quantity}
           min={0}
+          value={li.quantity}
           onValueChange={(v) =>
             updateLineItem(li.id, { quantity: typeof v === 'number' ? v : 0 })
           }
@@ -88,9 +93,9 @@ export function InvoiceBuilder() {
       width: '120px',
       render: (li) => (
         <NumberInput
-          value={li.unitPrice.amountMinor / 100}
           min={0}
           step={0.01}
+          value={li.unitPrice.amountMinor / 100}
           onValueChange={(v) =>
             updateLineItem(li.id, {
               unitPrice: money(typeof v === 'number' ? v : 0, 'USD'),
@@ -113,7 +118,7 @@ export function InvoiceBuilder() {
       width: '60px',
       align: 'right',
       render: (li) => (
-        <Button variant="ghost" size="sm" onClick={() => removeLineItem(li.id)}>
+        <Button size="sm" variant="ghost" onClick={() => removeLineItem(li.id)}>
           ✕
         </Button>
       ),
@@ -123,19 +128,19 @@ export function InvoiceBuilder() {
   return (
     <>
       <Card
-        title="Позиції інвойсу"
-        subtitle="Додавай / видаляй / редагуй рядки — оновлення мають бути immutable"
         actions={
           <Button size="sm" onClick={addLineItem}>
             + Додати позицію
           </Button>
         }
+        subtitle="Додавай / видаляй / редагуй рядки — оновлення мають бути immutable"
+        title="Позиції інвойсу"
       >
         <Table
           columns={columns}
-          rows={lineItems}
-          rowKey={(li) => li.id}
           empty="Немає позицій"
+          rowKey={(li) => li.id}
+          rows={lineItems}
         />
       </Card>
 

@@ -1,23 +1,23 @@
 .wrap {
-  display: flex;
   align-items: center;
-  gap: 10px;
   color: var(--text-muted);
+  display: flex;
   font-size: 13px;
+  gap: 10px;
   padding: 18px;
 }
+
 .ring {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2px solid var(--border-strong);
-  border-top-color: var(--primary);
   animation: spin 0.7s linear infinite;
+  border: 2px solid var(--border-strong);
+  border-radius: 50%;
+  border-top-color: var(--primary);
+  height: 18px;
+  width: 18px;
 }
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
-}
-.label {
 }

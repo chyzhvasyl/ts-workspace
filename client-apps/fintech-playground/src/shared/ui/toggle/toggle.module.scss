@@ -1,42 +1,48 @@
 .wrap {
-  display: inline-flex;
   align-items: center;
-  gap: 9px;
   cursor: pointer;
+  display: inline-flex;
+  gap: 9px;
 }
+
 .disabled {
-  opacity: 0.5;
   cursor: not-allowed;
+  opacity: 0.5;
 }
+
 .track {
-  position: relative;
-  width: 38px;
-  height: 22px;
-  border-radius: 999px;
   background: var(--border-strong);
   border: none;
+  border-radius: 999px;
+  height: 22px;
   padding: 0;
+  position: relative;
   transition: background 0.18s;
+  width: 38px;
 }
+
 .on {
   background: var(--primary);
 }
+
 .thumb {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 18px;
-  height: 18px;
   background: #fff;
   border-radius: 50%;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+  height: 18px;
+  left: 2px;
+  position: absolute;
+  top: 2px;
   transition: transform 0.18s;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  width: 18px;
 }
+
 .on .thumb {
   transform: translateX(16px);
 }
+
 .label {
+  color: var(--text);
   font-size: 13px;
   font-weight: 500;
-  color: var(--text);
 }

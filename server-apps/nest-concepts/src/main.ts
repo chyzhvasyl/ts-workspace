@@ -3,12 +3,10 @@
  * This is only a minimal backend to get started.
  */
 
-/* eslint-disable import/no-import-module-exports */
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
-/* eslint-enable import/no-import-module-exports */
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const module: any;

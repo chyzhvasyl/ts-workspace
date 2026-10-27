@@ -216,22 +216,22 @@ export function GuidePage() {
       </div>
 
       {SECTIONS.map((s) => (
-        <section key={s.title} className={styles.section}>
+        <section className={styles.section} key={s.title}>
           <div className={styles.sectionHead}>
             <h2>
               <span className={styles.sIcon}>{s.icon}</span> {s.title}
             </h2>
             {s.task && (
-              <Link to={s.task.to} className={styles.taskLink}>
+              <Link className={styles.taskLink} to={s.task.to}>
                 {s.task.label} →
               </Link>
             )}
           </div>
           <div className={styles.qaList}>
             {s.questions.map((qa) => (
-              <div key={qa.q} className={styles.qa}>
-                <p className={styles.q}>{qa.q}</p>
-                <p className={styles.a}>{qa.a}</p>
+              <div className={styles.qa} key={qa.q}>
+                <p className={styles.question}>{qa.q}</p>
+                <p className={styles.answer}>{qa.a}</p>
               </div>
             ))}
           </div>

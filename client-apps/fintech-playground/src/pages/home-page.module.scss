@@ -1,39 +1,45 @@
 .page {
-  padding: 36px 32px 60px;
-  max-width: 1180px;
   margin: 0 auto;
+  max-width: 1180px;
+  padding: 36px 32px 60px;
 }
+
 .hero {
   margin-bottom: 32px;
 }
+
 .badge {
+  background: var(--primary-soft);
+  border-radius: 999px;
+  color: var(--primary);
   display: inline-block;
   font-size: 12px;
   font-weight: 600;
-  color: var(--primary);
-  background: var(--primary-soft);
   padding: 4px 12px;
-  border-radius: 999px;
 }
+
 .title {
   font-size: 34px;
   margin: 14px 0 10px;
 }
+
 .subtitle {
-  font-size: 16px;
   color: var(--text-muted);
-  max-width: 72ch;
+  font-size: 16px;
   line-height: 1.65;
+  max-width: 72ch;
 }
+
 .metaRow {
-  display: flex;
   align-items: center;
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 13px;
   gap: 10px;
   margin-top: 18px;
-  font-size: 13px;
-  color: var(--text-muted);
-  flex-wrap: wrap;
 }
+
 .guideLink {
   color: var(--primary);
   font-weight: 600;
@@ -41,83 +47,96 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
 }
+
 .card {
-  display: flex;
-  flex-direction: column;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 20px;
   box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
   transition: all 0.15s;
+
   &:hover {
     border-color: var(--primary);
+    box-shadow: 0 6px 18px rgb(79 70 229 / 12%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.12);
   }
 }
+
 .cardHead {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
 }
+
 .order {
+  color: var(--text-subtle);
   font-family: var(--mono);
   font-size: 13px;
-  color: var(--text-subtle);
   font-weight: 700;
 }
+
 .diff {
+  border-radius: 999px;
   font-size: 11px;
   font-weight: 700;
-  padding: 2px 9px;
-  border-radius: 999px;
-  text-transform: uppercase;
   letter-spacing: 0.03em;
+  padding: 2px 9px;
+  text-transform: uppercase;
 }
+
 .junior {
   background: var(--success-soft);
   color: var(--success);
 }
+
 .middle {
   background: var(--info-soft);
   color: var(--info);
 }
+
 .senior {
   background: var(--danger-soft);
   color: var(--danger);
 }
+
 .cardTitle {
   font-size: 17px;
   margin-bottom: 8px;
 }
+
 .cardDesc {
-  font-size: 13px;
   color: var(--text-muted);
-  line-height: 1.55;
   flex: 1;
+  font-size: 13px;
+  line-height: 1.55;
 }
+
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
   margin: 14px 0 12px;
 }
+
 .tag {
-  font-size: 10px;
-  font-family: var(--mono);
-  color: var(--text-muted);
   background: var(--surface-2);
   border: 1px solid var(--border);
-  padding: 2px 7px;
   border-radius: 5px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 7px;
 }
+
 .cardFooter {
+  color: var(--primary);
   font-size: 13px;
   font-weight: 600;
-  color: var(--primary);
 }

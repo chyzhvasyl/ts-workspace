@@ -1,4 +1,5 @@
 import { TaskPage } from '../../pages/task-page';
+
 import { Recalculation } from './recalculation';
 
 export const meta = {
@@ -20,6 +21,16 @@ export const meta = {
 export function RecalculationHistoryPage() {
   return (
     <TaskPage
+      acceptance={[
+        'Зміна ставки додає крок в історію; undo/redo працюють і дизейбляться на межах.',
+        'set після undo очищає future.',
+        'Apply одразу показує нове значення; при “відмові сервера” відкочує назад і показує помилку.',
+      ]}
+      hints={[
+        'history: past[], present, future[]. undo: present→front of future, last past→present.',
+        'Оптимістичність = показати результат ДО відповіді сервера; зберегти previous для rollback.',
+        'Generic reducer тестується ізольовано — ідеальний приклад чистої логіки поза React.',
+      ]}
       meta={meta}
       requirements={[
         <>
@@ -31,16 +42,6 @@ export function RecalculationHistoryPage() {
           Розбери логіку <code>apply</code>: оптимістичне оновлення + rollback при відмові
           (вже накидано — поясни собі кожен рядок).
         </>,
-      ]}
-      acceptance={[
-        'Зміна ставки додає крок в історію; undo/redo працюють і дизейбляться на межах.',
-        'set після undo очищає future.',
-        'Apply одразу показує нове значення; при “відмові сервера” відкочує назад і показує помилку.',
-      ]}
-      hints={[
-        'history: past[], present, future[]. undo: present→front of future, last past→present.',
-        'Оптимістичність = показати результат ДО відповіді сервера; зберегти previous для rollback.',
-        'Generic reducer тестується ізольовано — ідеальний приклад чистої логіки поза React.',
       ]}
     >
       <Recalculation />

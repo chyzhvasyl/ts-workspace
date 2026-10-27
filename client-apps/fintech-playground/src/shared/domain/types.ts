@@ -1,11 +1,7 @@
-import { Currency, Money } from './money';
+import type { Currency, Money } from './money';
 
 export type TransactionStatus =
-  | 'approved'
-  | 'declined'
-  | 'refunded'
-  | 'chargeback'
-  | 'pending';
+  'approved' | 'declined' | 'refunded' | 'chargeback' | 'pending';
 
 export type PaymentMethod = 'card' | 'apple_pay' | 'google_pay' | 'paypal';
 

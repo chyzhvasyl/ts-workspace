@@ -9,6 +9,7 @@ import {
   StatusPill,
   Toggle,
 } from '../../shared/ui';
+
 import { canRedo, canUndo, historyReducer, initialHistory } from './history-reducer';
 
 interface FeeConfig {
@@ -33,22 +34,25 @@ export function Recalculation() {
     historyReducer<FeeConfig>,
     initialHistory<FeeConfig>({ rateBps: 290 }),
   );
+
   const [applyStatus, setApplyStatus] = useState<ApplyStatus>('idle');
   const [appliedConfig, setAppliedConfig] = useState<FeeConfig>({ rateBps: 290 });
   const [error, setError] = useState<string | null>(null);
   const [forceFail, setForceFail] = useState(false);
-
   const config = state.present;
 
   // 🎯 BONUS (optimistic update): apply config to the "server".
   // Optimistically set appliedConfig + status 'applying'; on failure → rollback.
   const apply = async () => {
     const previous = appliedConfig; // remember for rollback
+
     setError(null);
     setApplyStatus('applying');
     setAppliedConfig(config); // optimistic
+
     try {
       const saved = await persistConfig(config, forceFail);
+
       setAppliedConfig(saved);
       setApplyStatus('applied');
     } catch (e) {
@@ -70,36 +74,36 @@ export function Recalculation() {
   return (
     <>
       <Card
-        title="Чернетка конфігурації комісії"
-        subtitle="Редагуй ставку, ходи по історії undo/redo"
         actions={
           <>
             <Button
+              disabled={!canUndo(state)}
               size="sm"
               variant="secondary"
-              disabled={!canUndo(state)}
               onClick={() => dispatch({ type: 'undo' })}
             >
               ↶ undo
             </Button>
             <Button
+              disabled={!canRedo(state)}
               size="sm"
               variant="secondary"
-              disabled={!canRedo(state)}
               onClick={() => dispatch({ type: 'redo' })}
             >
               redo↻
             </Button>
           </>
         }
+        subtitle="Редагуй ставку, ходи по історії undo/redo"
+        title="Чернетка конфігурації комісії"
       >
         <div
           style={{ display: 'flex', gap: 20, alignItems: 'flex-end', flexWrap: 'wrap' }}
         >
-          <Field label="Ставка (bps)" hint={`${(config.rateBps / 100).toFixed(2)}%`}>
+          <Field hint={`${(config.rateBps / 100).toFixed(2)}%`} label="Ставка (bps)">
             <NumberInput
-              value={config.rateBps}
               min={0}
+              value={config.rateBps}
               onValueChange={(v) =>
                 dispatch({
                   type: 'set',
@@ -121,25 +125,25 @@ export function Recalculation() {
       </Card>
 
       <Card
-        title="Застосувати перерахунок (optimistic)"
         actions={<StatusPill tone={statusTone}>{applyStatus}</StatusPill>}
         footer={
           <Toggle
             checked={forceFail}
-            onCheckedChange={setForceFail}
             label="Симулювати відмову сервера"
+            onCheckedChange={setForceFail}
           />
         }
+        title="Застосувати перерахунок (optimistic)"
       >
         <p style={{ fontSize: 14, marginBottom: 14 }}>
           Застосована ставка: <strong>{(appliedConfig.rateBps / 100).toFixed(2)}%</strong>
         </p>
-        <Button onClick={apply} disabled={applyStatus === 'applying'}>
+        <Button disabled={applyStatus === 'applying'} onClick={apply}>
           Застосувати {(config.rateBps / 100).toFixed(2)}%
         </Button>
         {error && (
           <div style={{ marginTop: 14 }}>
-            <Callout tone="danger" title="Відкат (rollback)">
+            <Callout title="Відкат (rollback)" tone="danger">
               {error}. Значення повернулось до попереднього.
             </Callout>
           </div>

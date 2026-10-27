@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import styles from './table.module.scss';
 
@@ -47,8 +47,8 @@ export function Table<Row>({
           ) : (
             rows.map((row) => (
               <tr
-                key={rowKey(row)}
                 className={onRowClick ? styles.clickable : ''}
+                key={rowKey(row)}
                 onClick={onRowClick ? () => onRowClick(row) : undefined}
               >
                 {columns.map((c) => (

@@ -1,105 +1,123 @@
 .page {
-  padding: 36px 32px 70px;
-  max-width: 900px;
   margin: 0 auto;
+  max-width: 900px;
+  padding: 36px 32px 70px;
 }
+
 .header {
   margin-bottom: 24px;
 }
+
 .badge {
+  background: var(--primary-soft);
+  border-radius: 999px;
+  color: var(--primary);
   display: inline-block;
   font-size: 12px;
   font-weight: 600;
-  color: var(--primary);
-  background: var(--primary-soft);
-  padding: 4px 12px;
-  border-radius: 999px;
   margin-bottom: 14px;
+  padding: 4px 12px;
 }
+
 .header h1 {
   font-size: 30px;
   margin-bottom: 10px;
 }
+
 .lead {
-  font-size: 16px;
   color: var(--text-muted);
+  font-size: 16px;
   line-height: 1.65;
 }
+
 .flow {
   background: var(--surface);
   border: 1px solid var(--border);
   border-left: 3px solid var(--primary);
   border-radius: var(--radius);
-  padding: 14px 18px;
+  color: var(--text-muted);
   font-size: 14px;
   line-height: 1.6;
-  color: var(--text-muted);
   margin-bottom: 28px;
+  padding: 14px 18px;
 }
+
 .section {
   margin-bottom: 26px;
 }
+
 .sectionHead {
-  display: flex;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 12px;
   padding-bottom: 8px;
 }
+
 .sectionHead h2 {
   font-size: 18px;
 }
+
 .sIcon {
   margin-right: 4px;
 }
+
 .taskLink {
+  color: var(--primary);
   font-size: 12px;
   font-weight: 600;
-  color: var(--primary);
   white-space: nowrap;
 }
+
 .qaList {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
+
 .qa {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 14px 16px;
 }
-.q {
+
+.question {
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 5px;
 }
-.a {
-  font-size: 14px;
+
+.answer {
   color: var(--text-muted);
+  font-size: 14px;
   line-height: 1.6;
 }
+
 .focus {
-  margin-top: 36px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  margin-top: 36px;
   padding: 20px 22px;
 }
+
 .focus h2 {
   font-size: 18px;
   margin-bottom: 14px;
 }
+
 .focus ul {
-  padding-left: 20px;
   display: flex;
   flex-direction: column;
   gap: 9px;
+  padding-left: 20px;
 }
+
 .focus li {
-  font-size: 14px;
   color: var(--text-muted);
+  font-size: 14px;
   line-height: 1.55;
 }

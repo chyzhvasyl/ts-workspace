@@ -1,12 +1,13 @@
-// / <reference types='vitest' />
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 
 import react from '@vitejs/plugin-react';
+import { nxReadySignal } from '@nx/vite/plugins/nx-ready-signal.plugin';
 
 export default defineConfig({
-  root: __dirname,
+  resolve: {
+    tsconfigPaths: true,
+  },
+  root: import.meta.dirname,
   cacheDir: '../../node_modules/.vite/client-apps/react-concepts',
   server: {
     port: 4200,
@@ -16,11 +17,7 @@ export default defineConfig({
     port: 4300,
     host: 'localhost',
   },
-  plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
+  plugins: [react(), nxReadySignal()],
   build: {
     outDir: '../../dist/client-apps/react-concepts',
     emptyOutDir: true,

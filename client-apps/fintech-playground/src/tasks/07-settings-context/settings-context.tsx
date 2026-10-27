@@ -1,6 +1,7 @@
-import { createContext, ReactNode, useContext } from 'react';
+import type { ReactNode } from 'react';
+import { createContext, useContext } from 'react';
 
-import { Currency } from '../../shared/domain/money';
+import type { Currency } from '../../shared/domain/money';
 
 export type RoundingMode = 'half_up' | 'bankers' | 'floor';
 

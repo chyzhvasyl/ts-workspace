@@ -1,4 +1,4 @@
-import { SelectHTMLAttributes } from 'react';
+import type { SelectHTMLAttributes } from 'react';
 
 import styles from './select.module.scss';
 

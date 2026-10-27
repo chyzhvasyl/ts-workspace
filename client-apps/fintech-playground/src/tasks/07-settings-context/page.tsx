@@ -1,5 +1,6 @@
-import { Callout } from '../../shared/ui';
 import { TaskPage } from '../../pages/task-page';
+import { Callout } from '../../shared/ui';
+
 import { SettingsPanels } from './settings-panels';
 
 export const meta = {
@@ -21,6 +22,16 @@ export const meta = {
 export function SettingsContextPage() {
   return (
     <TaskPage
+      acceptance={[
+        'Зміна налаштувань оновлює Preview-панель.',
+        'Лічильник “Controls render” НЕ росте при зміні state (бо споживає лише actions).',
+        'useSettings/useSettingsActions працюють із двох різних контекстів.',
+      ]}
+      hints={[
+        'Один контекст із обʼєктом {state, actions} ре-рендерить усіх споживачів. Розділяй.',
+        'actions мають стабільну ідентичність → useMemo(() => ({...}), []). setState-функції стабільні самі по собі.',
+        'Context — для рідко змінюваних/глобальних даних. Для частих оновлень — Zustand/Redux/Jotai.',
+      ]}
       meta={meta}
       requirements={[
         <>
@@ -33,18 +44,8 @@ export function SettingsContextPage() {
         </>,
         <>Підключи контроли до реальних actions, а превʼю — до state.</>,
       ]}
-      acceptance={[
-        'Зміна налаштувань оновлює Preview-панель.',
-        'Лічильник “Controls render” НЕ росте при зміні state (бо споживає лише actions).',
-        'useSettings/useSettingsActions працюють із двох різних контекстів.',
-      ]}
-      hints={[
-        'Один контекст із обʼєктом {state, actions} ре-рендерить усіх споживачів. Розділяй.',
-        'actions мають стабільну ідентичність → useMemo(() => ({...}), []). setState-функції стабільні самі по собі.',
-        'Context — для рідко змінюваних/глобальних даних. Для частих оновлень — Zustand/Redux/Jotai.',
-      ]}
     >
-      <Callout tone="info" title="Як перевірити">
+      <Callout title="Як перевірити" tone="info">
         Зараз контроли нічого не роблять (passthrough-провайдер). Реалізуй провайдер — і
         слідкуй за двома лічильниками рендерів.
       </Callout>

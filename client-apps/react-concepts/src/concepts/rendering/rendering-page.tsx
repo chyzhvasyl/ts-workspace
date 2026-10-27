@@ -18,10 +18,8 @@ export function RenderingPage() {
       </div>
 
       <DemoBlock
-        title="Re-render та React.memo"
         badge="info"
         badgeText="Ключова тема"
-        description="Будь-який ре-рендер батька → ре-рендер дочірніх компонентів, навіть якщо props не змінились. React.memo вирішує це, але тільки якщо всі props стабільні за посиланням."
         code={`// ❌ ChildNoMemo ре-рендериться кожен раз
 function ChildNoMemo({ name }: { name: string }) {
   return <div>{name}</div>;
@@ -37,15 +35,15 @@ const handleClickBad = () => console.log('click'); // new ref!
 
 // ✅ useCallback стабілізує посилання на функцію
 const handleClickGood = useCallback(() => console.log('click'), []);`}
+        description="Будь-який ре-рендер батька → ре-рендер дочірніх компонентів, навіть якщо props не змінились. React.memo вирішує це, але тільки якщо всі props стабільні за посиланням."
+        title="Re-render та React.memo"
       >
         <ReRenderDemo />
       </DemoBlock>
 
       <DemoBlock
-        title="key prop та списки"
         badge="warning"
         badgeText="Часта помилка"
-        description="key — це ідентичність елемента для React. З key=index при додаванні/видаленні на початку React 'думає' що змінились всі елементи. З key=item.id точно знає що змінилось."
         code={`// ❌ Погано — index як key
 {items.map((item, i) => (
   <ListItem key={i} {...item} />
@@ -57,15 +55,15 @@ const handleClickGood = useCallback(() => console.log('click'), []);`}
   <ListItem key={item.id} {...item} />
 ))}
 // React точно знає: цей елемент переміщено, а не змінено`}
+        description="key — це ідентичність елемента для React. З key=index при додаванні/видаленні на початку React 'думає' що змінились всі елементи. З key=item.id точно знає що змінилось."
+        title="key prop та списки"
       >
         <KeysDemo />
       </DemoBlock>
 
       <DemoBlock
-        title="Batching — групування setState"
         badge="success"
         badgeText="React 18"
-        description="React групує кілька setState в один рендер. До React 18 це працювало тільки в event handlers. React 18 додав automatic batching — тепер навіть в setTimeout і Promise."
         code={`// Три setState → ОДИН ре-рендер (в будь-якому контексті React 18)
 function handleClick() {
   setCount(c => c + 1);
@@ -80,6 +78,8 @@ setTimeout(() => {
   setName('Vasyl');
   setLoading(false);
 }, 0);`}
+        description="React групує кілька setState в один рендер. До React 18 це працювало тільки в event handlers. React 18 додав automatic batching — тепер навіть в setTimeout і Promise."
+        title="Batching — групування setState"
       >
         <BatchingDemo />
       </DemoBlock>

@@ -1,8 +1,10 @@
 import { useState } from 'react';
 
-import { money, Money as MoneyValue, zero } from '../../shared/domain/money';
-import { CommissionRule } from '../../shared/domain/types';
+import type { Money as MoneyValue } from '../../shared/domain/money';
+import { money, zero } from '../../shared/domain/money';
+import type { CommissionRule } from '../../shared/domain/types';
 import { Callout, Card, Field, Money, NumberInput, Select, Stat } from '../../shared/ui';
+
 import { calculateFee, calculateNet } from './calculate-fee';
 
 type RuleKind = CommissionRule['kind'];
@@ -24,13 +26,14 @@ export function FeeCalculator() {
     typeof amountMajor === 'number' ? amountMajor : 0,
     'USD',
   );
-  const rule: CommissionRule = buildRule(kind, rateBps, fixedMajor);
 
+  const rule: CommissionRule = buildRule(kind, rateBps, fixedMajor);
   // 🎯 TODO: derive these from `amount` + `rule` using your pure functions.
   // Do NOT keep fee/net in useState — they are DERIVED values.
   let fee: MoneyValue = zero('USD');
   let net: MoneyValue = zero('USD');
   let error: string | null = null;
+
   try {
     fee = calculateFee(amount, rule);
     net = calculateNet(amount, rule);
@@ -41,8 +44,8 @@ export function FeeCalculator() {
   return (
     <>
       <Card
-        title="Конфігурація комісії"
         subtitle="Зміни інпути — результат має перерахуватись миттєво"
+        title="Конфігурація комісії"
       >
         <div
           style={{
@@ -52,27 +55,27 @@ export function FeeCalculator() {
           }}
         >
           <Field label="Сума (USD)">
-            <NumberInput value={amountMajor} onValueChange={setAmountMajor} min={0} />
+            <NumberInput min={0} value={amountMajor} onValueChange={setAmountMajor} />
           </Field>
           <Field label="Тип правила">
             <Select
-              value={kind}
               options={RULE_OPTIONS}
-              onValueChange={(v) => setKind(v as RuleKind)}
+              value={kind}
+              onValueChange={(v) => setKind(v)}
             />
           </Field>
           {(kind === 'percentage' || kind === 'percentage_plus_fixed') && (
-            <Field label="Ставка (bps)" hint="290 bps = 2.90%">
-              <NumberInput value={rateBps} onValueChange={setRateBps} min={0} />
+            <Field hint="290 bps = 2.90%" label="Ставка (bps)">
+              <NumberInput min={0} value={rateBps} onValueChange={setRateBps} />
             </Field>
           )}
           {(kind === 'fixed' || kind === 'percentage_plus_fixed') && (
             <Field label="Фіксована (USD)">
               <NumberInput
-                value={fixedMajor}
-                onValueChange={setFixedMajor}
                 min={0}
                 step={0.01}
+                value={fixedMajor}
+                onValueChange={setFixedMajor}
               />
             </Field>
           )}
@@ -80,18 +83,18 @@ export function FeeCalculator() {
       </Card>
 
       {error ? (
-        <Callout tone="warning" title="Логіка ще не реалізована">
+        <Callout title="Логіка ще не реалізована" tone="warning">
           {error}. Відкрий <code>calculate-fee.ts</code> і реалізуй функції.
         </Callout>
       ) : (
         <div style={{ display: 'grid', gap: 14, gridTemplateColumns: 'repeat(3,1fr)' }}>
           <Stat label="Gross" value={<Money value={amount} />} />
           <Stat
+            hint="скільки бере платформа"
             label="Комісія"
             value={<Money value={fee} />}
-            hint="скільки бере платформа"
           />
-          <Stat label="Net мерчанту" value={<Money value={net} colored />} />
+          <Stat label="Net мерчанту" value={<Money colored value={net} />} />
         </div>
       )}
     </>
@@ -105,6 +108,7 @@ function buildRule(
 ): CommissionRule {
   const bps = typeof rateBps === 'number' ? rateBps : 0;
   const fixed = money(typeof fixedMajor === 'number' ? fixedMajor : 0, 'USD');
+
   switch (kind) {
     case 'percentage':
       return { kind, rateBps: bps };

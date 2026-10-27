@@ -9,7 +9,6 @@ interface Item {
 }
 
 const COLORS = ['#fecaca', '#fed7aa', '#fef08a', '#bbf7d0', '#bfdbfe', '#e9d5ff'];
-
 let nextId = 6;
 
 const initialItems: Item[] = [
@@ -38,6 +37,7 @@ export function KeysDemo() {
       label: `Item NEW`,
       color: COLORS[nextId % COLORS.length] ?? '#fecaca',
     };
+
     setItems((prev) => [newItem, ...prev]);
   };
 
@@ -68,7 +68,7 @@ export function KeysDemo() {
           </div>
           <div className={styles.list}>
             {items.map((item, i) => (
-              <ListItem key={i} label={item.label} color={item.color} />
+              <ListItem color={item.color} key={i} label={item.label} />
             ))}
           </div>
           <pre className={styles.code}>
@@ -83,7 +83,7 @@ export function KeysDemo() {
           </div>
           <div className={styles.list}>
             {items.map((item) => (
-              <ListItem key={item.id} label={item.label} color={item.color} />
+              <ListItem color={item.color} key={item.id} label={item.label} />
             ))}
           </div>
           <pre className={styles.code}>

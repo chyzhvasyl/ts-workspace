@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
 import { money } from '../../shared/domain/money';
-import { Invoice } from '../../shared/domain/types';
+import type { Invoice } from '../../shared/domain/types';
+
 import { computeTotals } from './invoice-totals';
 
 const invoice: Invoice = {

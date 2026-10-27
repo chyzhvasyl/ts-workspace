@@ -1,21 +1,25 @@
 .empty {
-  text-align: center;
-  padding: 40px 20px;
   color: var(--text-muted);
+  padding: 40px 20px;
+  text-align: center;
 }
+
 .icon {
-  font-size: 32px;
   display: block;
+  font-size: 32px;
   margin-bottom: 10px;
 }
+
 .title {
-  font-size: 15px;
   color: var(--text);
+  font-size: 15px;
 }
+
 .desc {
   font-size: 13px;
   margin-top: 4px;
 }
+
 .action {
   margin-top: 14px;
 }

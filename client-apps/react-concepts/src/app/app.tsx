@@ -46,12 +46,12 @@ export function App() {
         <nav className={styles.nav}>
           {NAV_ITEMS.map((item) => (
             <NavLink
-              key={item.path}
-              to={item.path}
-              end={item.end}
               className={({ isActive }) =>
                 `${styles.navItem} ${isActive ? styles.navItemActive : ''}`
               }
+              end={item.end}
+              key={item.path}
+              to={item.path}
             >
               <span className={styles.navIcon}>{item.icon}</span>
               <span className={styles.navContent}>
@@ -70,10 +70,10 @@ export function App() {
 
       <main className={styles.main}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/rendering" element={<RenderingPage />} />
-          <Route path="/hooks" element={<HooksPage />} />
-          <Route path="/context" element={<ContextPage />} />
+          <Route element={<HomePage />} path="/" />
+          <Route element={<RenderingPage />} path="/rendering" />
+          <Route element={<HooksPage />} path="/hooks" />
+          <Route element={<ContextPage />} path="/context" />
         </Routes>
       </main>
     </div>

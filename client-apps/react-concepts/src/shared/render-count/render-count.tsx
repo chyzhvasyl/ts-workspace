@@ -8,6 +8,7 @@ interface RenderCountProps {
 
 export function RenderCount({ label = 'Renders' }: RenderCountProps) {
   const countRef = useRef(0);
+
   countRef.current++;
 
   return (

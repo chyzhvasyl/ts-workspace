@@ -16,11 +16,11 @@ export function Toggle({
   return (
     <label className={`${styles.wrap} ${disabled ? styles.disabled : ''}`}>
       <button
-        type="button"
-        role="switch"
         aria-checked={checked}
-        disabled={disabled}
         className={`${styles.track} ${checked ? styles.on : ''}`}
+        disabled={disabled}
+        role="switch"
+        type="button"
         onClick={() => onCheckedChange(!checked)}
       >
         <span className={styles.thumb} />

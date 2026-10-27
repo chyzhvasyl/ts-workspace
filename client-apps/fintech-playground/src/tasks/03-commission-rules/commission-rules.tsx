@@ -1,8 +1,10 @@
 import { useReducer } from 'react';
 
 import { formatMoney, money } from '../../shared/domain/money';
-import { CommissionTier } from '../../shared/domain/types';
-import { Button, Card, Column, NumberInput, Table } from '../../shared/ui';
+import type { CommissionTier } from '../../shared/domain/types';
+import type { Column } from '../../shared/ui';
+import { Button, Card, NumberInput, Table } from '../../shared/ui';
+
 import { initialRulesState, rulesReducer } from './rules-reducer';
 
 export function CommissionRules() {
@@ -14,8 +16,8 @@ export function CommissionRules() {
       header: 'Від суми (USD)',
       render: (t) => (
         <NumberInput
-          value={t.fromMinor / 100}
           min={0}
+          value={t.fromMinor / 100}
           onValueChange={(v) =>
             dispatch({
               type: 'set_from',
@@ -31,8 +33,8 @@ export function CommissionRules() {
       header: 'Ставка (bps)',
       render: (t) => (
         <NumberInput
-          value={t.rateBps}
           min={0}
+          value={t.rateBps}
           onValueChange={(v) =>
             dispatch({
               type: 'set_rate',
@@ -56,8 +58,8 @@ export function CommissionRules() {
       align: 'right',
       render: (t) => (
         <Button
-          variant="ghost"
           size="sm"
+          variant="ghost"
           onClick={() => dispatch({ type: 'remove_tier', index: t.index })}
         >
           ✕
@@ -70,8 +72,6 @@ export function CommissionRules() {
 
   return (
     <Card
-      title="Тарифні рівні (tiered pricing)"
-      subtitle="Кожен рівень — нижня межа суми + ставка. Усім керує useReducer."
       actions={
         <>
           <Button
@@ -93,12 +93,14 @@ export function CommissionRules() {
           <code> fromMinor ≤ 50000</code>.
         </span>
       }
+      subtitle="Кожен рівень — нижня межа суми + ставка. Усім керує useReducer."
+      title="Тарифні рівні (tiered pricing)"
     >
       <Table
         columns={columns}
-        rows={rows}
-        rowKey={(t) => String(t.index)}
         empty="Немає рівнів — додай перший"
+        rowKey={(t) => String(t.index)}
+        rows={rows}
       />
     </Card>
   );

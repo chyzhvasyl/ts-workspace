@@ -16,10 +16,8 @@ export function ContextPage() {
       </div>
 
       <DemoBlock
-        title="Проблема: один великий контекст"
         badge="danger"
         badgeText="❌ Антипатерн"
-        description="Якщо всі дані в одному контексті — будь-яка зміна будь-якого значення ре-рендерить ВСІХ споживачів. Header ре-рендериться при зміні cart, хоча cart не читає."
         code={`// ❌ Один великий контекст — всі споживачі ре-рендеряться при будь-якій зміні
 const AppContext = createContext({ user: null, theme: 'light', cart: [] });
 
@@ -41,15 +39,15 @@ function Header() {
   const { user } = useContext(AppContext); // читає тільки user...
   // ...але ре-рендериться при зміні cart теж 😢
 }`}
+        description="Якщо всі дані в одному контексті — будь-яка зміна будь-якого значення ре-рендерить ВСІХ споживачів. Header ре-рендериться при зміні cart, хоча cart не читає."
+        title="Проблема: один великий контекст"
       >
         <ContextRerenderDemo />
       </DemoBlock>
 
       <DemoBlock
-        title="Рішення: розбити на окремі контексти"
         badge="success"
         badgeText="✅ Best Practice"
-        description="Розбий контекст за доменом. Споживач підписується тільки на той контекст, який реально використовує. Зміна cart не зачіпає Header і Theme."
         code={`// ✅ Окремі контексти за доменом
 const UserContext = createContext(null);
 const ThemeContext = createContext('light');
@@ -70,6 +68,8 @@ function App() {
 }
 
 // Тепер Header ре-рендериться ТІЛЬКИ при зміні user ✓`}
+        description="Розбий контекст за доменом. Споживач підписується тільки на той контекст, який реально використовує. Зміна cart не зачіпає Header і Theme."
+        title="Рішення: розбити на окремі контексти"
       >
         <SplitContextDemo />
       </DemoBlock>

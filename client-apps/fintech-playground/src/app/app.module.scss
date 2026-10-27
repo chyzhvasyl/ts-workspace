@@ -1,125 +1,148 @@
 .layout {
+  background: var(--bg);
   display: flex;
   min-height: 100vh;
-  background: var(--bg);
 }
+
 .sidebar {
-  width: 264px;
-  flex-shrink: 0;
   background: var(--surface);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  position: sticky;
-  top: 0;
+  flex-shrink: 0;
   height: 100vh;
   overflow-y: auto;
+  position: sticky;
+  top: 0;
+  width: 264px;
 }
+
 .logo {
-  display: flex;
   align-items: center;
+  border-bottom: 1px solid var(--border);
+  display: flex;
   gap: 10px;
   padding: 20px 18px 16px;
-  border-bottom: 1px solid var(--border);
 }
+
 .logoIcon {
-  font-size: 18px;
   color: var(--primary);
+  font-size: 18px;
 }
+
 .logoText {
   font-size: 15px;
   font-weight: 700;
 }
+
 .nav {
-  flex: 1;
-  padding: 12px 10px;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 2px;
+  padding: 12px 10px;
 }
+
 .sectionLabel {
+  color: var(--text-subtle);
   font-size: 10px;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--text-subtle);
   padding: 14px 12px 6px;
+  text-transform: uppercase;
 }
+
 .item {
-  display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 12px;
   border-radius: 8px;
   color: var(--text);
+  display: flex;
+  gap: 10px;
+  padding: 9px 12px;
   transition: all 0.15s;
+
   &:hover {
     background: var(--surface-2);
   }
 }
+
 .active {
   background: var(--primary-soft);
+
   .itemLabel {
     color: var(--primary);
     font-weight: 700;
   }
+
   .itemNum {
     color: var(--primary);
   }
 }
+
 .itemIcon {
   font-size: 15px;
 }
+
 .itemNum {
+  color: var(--text-subtle);
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 700;
-  color: var(--text-subtle);
   width: 20px;
 }
+
 .itemContent {
   display: flex;
   flex-direction: column;
   gap: 1px;
   min-width: 0;
 }
+
 .itemLabel {
   font-size: 13px;
   font-weight: 500;
   line-height: 1.25;
 }
+
 .itemDiff {
   font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
   font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
+
 .junior {
   color: var(--success);
 }
+
 .middle {
   color: var(--info);
 }
+
 .senior {
   color: var(--danger);
 }
+
 .footer {
-  padding: 14px 18px;
   border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 2px;
+  padding: 14px 18px;
 }
+
 .footerText {
+  color: var(--text-muted);
   font-size: 12px;
   font-weight: 600;
-  color: var(--text-muted);
 }
+
 .footerSub {
-  font-size: 11px;
   color: var(--text-subtle);
   font-family: var(--mono);
+  font-size: 11px;
 }
+
 .main {
   flex: 1;
   min-width: 0;

@@ -1,4 +1,4 @@
-import { CommissionTier } from '../../shared/domain/types';
+import type { CommissionTier } from '../../shared/domain/types';
 
 export interface RulesState {
   tiers: CommissionTier[]; // sorted ascending by fromMinor

@@ -3,7 +3,6 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "server-apps/nest-concepts/src",
   "projectType": "application",
-  "root": "server-apps/nest-concepts",
   "tags": [],
   "targets": {
     "serve": {
@@ -25,24 +24,11 @@
       }
     },
     "build": {
-      "executor": "@nx/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{workspaceRoot}/dist/server-apps/nest-concepts", "{projectRoot}/dist"],
       "defaultConfiguration": "development",
-      "options": {
-        "target": "node",
-        "compiler": "tsc",
-        "outputPath": "dist/server-apps/nest-concepts",
-        "main": "server-apps/nest-concepts/src/main.ts",
-        "assets": ["server-apps/nest-concepts/src/assets"],
-        "webpackConfig": "server-apps/nest-concepts/webpack.config.js"
-      },
       "configurations": {
-        "development": {
-          "outputPath": "dist/server-apps/nest-concepts"
-        },
-        "production": {
-          "outputPath": "dist/server-apps/nest-concepts"
-        }
+        "development": {},
+        "production": {}
       }
     },
     "serve-hmr": {

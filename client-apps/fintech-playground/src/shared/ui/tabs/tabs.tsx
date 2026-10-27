@@ -16,10 +16,10 @@ export function Tabs<T extends string>({ items, value, onValueChange }: TabsProp
     <div className={styles.tabs} role="tablist">
       {items.map((it) => (
         <button
-          key={it.value}
-          role="tab"
           aria-selected={it.value === value}
           className={`${styles.tab} ${it.value === value ? styles.active : ''}`}
+          key={it.value}
+          role="tab"
           onClick={() => onValueChange(it.value)}
         >
           {it.label}

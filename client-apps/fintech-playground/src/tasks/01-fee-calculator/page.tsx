@@ -1,4 +1,5 @@
 import { TaskPage } from '../../pages/task-page';
+
 import { FeeCalculator } from './fee-calculator';
 
 export const meta = {
@@ -20,6 +21,16 @@ export const meta = {
 export function FeeCalculatorPage() {
   return (
     <TaskPage
+      acceptance={[
+        'Зміна суми/ставки одразу оновлює результат.',
+        '290 bps на $100 → комісія $2.90; + fixed $0.30 → $3.20; net $96.80.',
+        'switch по rule.kind вичерпний (TypeScript не свариться на never).',
+      ]}
+      hints={[
+        'Єдине джерело правди — інпути. fee і net виводяться з них.',
+        'rateBps / 10_000 дає частку; множ на amount.amountMinor і округлюй.',
+        'Чому minor units? 0.1 + 0.2 !== 0.3 у float — у фінтеху це баг.',
+      ]}
       meta={meta}
       requirements={[
         <>
@@ -34,16 +45,6 @@ export function FeeCalculatorPage() {
           обчислює їх під час рендеру.
         </>,
         <>Усі обчислення — в minor units (цілі числа), щоб уникнути помилок float.</>,
-      ]}
-      acceptance={[
-        'Зміна суми/ставки одразу оновлює результат.',
-        '290 bps на $100 → комісія $2.90; + fixed $0.30 → $3.20; net $96.80.',
-        'switch по rule.kind вичерпний (TypeScript не свариться на never).',
-      ]}
-      hints={[
-        'Єдине джерело правди — інпути. fee і net виводяться з них.',
-        'rateBps / 10_000 дає частку; множ на amount.amountMinor і округлюй.',
-        'Чому minor units? 0.1 + 0.2 !== 0.3 у float — у фінтеху це баг.',
       ]}
     >
       <FeeCalculator />

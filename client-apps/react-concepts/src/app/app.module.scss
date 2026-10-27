@@ -1,29 +1,29 @@
 .layout {
+  background: #f9fafb;
   display: flex;
   min-height: 100vh;
-  background: #f9fafb;
 }
 
 // ─── Sidebar ───────────────────────────────────────────────────────────────────
 .sidebar {
-  width: 240px;
-  flex-shrink: 0;
   background: #fff;
   border-right: 1px solid #e5e7eb;
   display: flex;
   flex-direction: column;
-  position: sticky;
-  top: 0;
+  flex-shrink: 0;
   height: 100vh;
   overflow-y: auto;
+  position: sticky;
+  top: 0;
+  width: 240px;
 }
 
 .logo {
-  display: flex;
   align-items: center;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
   gap: 10px;
   padding: 20px 20px 16px;
-  border-bottom: 1px solid #f3f4f6;
 }
 
 .logoIcon {
@@ -32,27 +32,27 @@
 }
 
 .logoText {
+  color: #111827;
   font-size: 15px;
   font-weight: 700;
-  color: #111827;
 }
 
 .nav {
-  flex: 1;
-  padding: 12px 10px;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 2px;
+  padding: 12px 10px;
 }
 
 .navItem {
-  display: flex;
   align-items: flex-start;
+  border-radius: 8px;
+  color: #374151;
+  display: flex;
   gap: 10px;
   padding: 10px 12px;
-  border-radius: 8px;
   text-decoration: none;
-  color: #374151;
   transition: all 0.15s;
 
   &:hover {
@@ -76,10 +76,10 @@
 }
 
 .navIcon {
+  flex-shrink: 0;
   font-size: 16px;
   line-height: 1;
   margin-top: 2px;
-  flex-shrink: 0;
 }
 
 .navContent {
@@ -90,36 +90,36 @@
 }
 
 .navLabel {
+  color: inherit;
   font-size: 14px;
   font-weight: 500;
-  color: inherit;
   line-height: 1.2;
 }
 
 .navSub {
-  font-size: 11px;
   color: #9ca3af;
+  font-size: 11px;
   line-height: 1.3;
 }
 
 .sidebarFooter {
-  padding: 16px 20px;
   border-top: 1px solid #f3f4f6;
   display: flex;
   flex-direction: column;
   gap: 2px;
+  padding: 16px 20px;
 }
 
 .footerText {
+  color: #374151;
   font-size: 12px;
   font-weight: 600;
-  color: #374151;
 }
 
 .footerSub {
-  font-size: 11px;
   color: #9ca3af;
   font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
 }
 
 // ─── Main ──────────────────────────────────────────────────────────────────────

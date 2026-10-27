@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "nx-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "nx-mcp@0.25.0", "--disableTelemetry"]
+    },
+    "angular-cli": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@angular/cli@21.2.28", "mcp", "--read-only"],
+      "env": {
+        "NG_CLI_ANALYTICS": "false"
+      }
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@0.0.83", "--isolated"]
+    }
+  }
+}

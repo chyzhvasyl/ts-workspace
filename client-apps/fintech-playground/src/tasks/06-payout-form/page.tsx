@@ -1,4 +1,5 @@
 import { TaskPage } from '../../pages/task-page';
+
 import { PayoutForm } from './payout-form';
 
 export const meta = {
@@ -20,6 +21,17 @@ export const meta = {
 export function PayoutFormPage() {
   return (
     <TaskPage
+      acceptance={[
+        'Помилка показується лише після blur (touched), не одразу.',
+        'Невалідна форма не сабмітиться; валідна викликає onValid.',
+        'IBAN приводиться до uppercase і валідується регуляркою.',
+        'Submit невалідної форми фокусує поле суми.',
+      ]}
+      hints={[
+        'Контрольований інпут: value зі стану + onChange у стан. Єдине джерело правди — стан.',
+        'touched: позначай поле при onBlur; показуй errors[key] лише якщо touched[key].',
+        'useRef для імперативних дій (focus) — це валідний escape hatch із декларативного React.',
+      ]}
       meta={meta}
       requirements={[
         <>
@@ -33,17 +45,6 @@ export function PayoutFormPage() {
         <>
           На невалідний submit — сфокусуй перше помилкове поле через <code>useRef</code>.
         </>,
-      ]}
-      acceptance={[
-        'Помилка показується лише після blur (touched), не одразу.',
-        'Невалідна форма не сабмітиться; валідна викликає onValid.',
-        'IBAN приводиться до uppercase і валідується регуляркою.',
-        'Submit невалідної форми фокусує поле суми.',
-      ]}
-      hints={[
-        'Контрольований інпут: value зі стану + onChange у стан. Єдине джерело правди — стан.',
-        'touched: позначай поле при onBlur; показуй errors[key] лише якщо touched[key].',
-        'useRef для імперативних дій (focus) — це валідний escape hatch із декларативного React.',
       ]}
     >
       <PayoutForm />

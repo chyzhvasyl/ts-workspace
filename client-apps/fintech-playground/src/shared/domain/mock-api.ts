@@ -1,5 +1,5 @@
 import { money } from './money';
-import { Balance, Merchant, Transaction, TransactionStatus } from './types';
+import type { Balance, Merchant, Transaction, TransactionStatus } from './types';
 
 /**
  * A fake async API that mimics a network layer.
@@ -14,6 +14,7 @@ const MERCHANTS: Merchant[] = [
 ];
 
 const METHODS = ['card', 'apple_pay', 'google_pay', 'paypal'] as const;
+
 const STATUSES: TransactionStatus[] = [
   'approved',
   'declined',
@@ -21,10 +22,12 @@ const STATUSES: TransactionStatus[] = [
   'chargeback',
   'pending',
 ];
+
 const COUNTRIES = ['US', 'GB', 'DE', 'UA', 'PL', 'ES', 'FR'];
 
 function seeded(n: number): number {
   const x = Math.sin(n * 99.7) * 10000;
+
   return x - Math.floor(x);
 }
 
@@ -34,6 +37,7 @@ function buildTransactions(count: number): Transaction[] {
     const merchant = MERCHANTS[i % MERCHANTS.length]!;
     const amountMajor = Math.round((5 + r * 480) * 100) / 100;
     const status = STATUSES[Math.floor(seeded(i + 7) * STATUSES.length)]!;
+
     return {
       id: `tx_${(1000 + i).toString()}`,
       createdAt: new Date(Date.UTC(2026, 4, 1 + (i % 28), i % 24, i % 60)).toISOString(),
@@ -82,18 +86,24 @@ interface FetchOptions {
 
 function respond<T>(data: T, opts: FetchOptions = {}): Promise<T> {
   const { delayMs = 600, failRate = 0, signal } = opts;
+
   return new Promise((resolve, reject) => {
     if (signal?.aborted) {
       reject(new DOMException('Aborted', 'AbortError'));
+
       return;
     }
+
     const timer = setTimeout(() => {
       if (Math.random() < failRate) {
         reject(new Error('Network error: request failed'));
+
         return;
       }
+
       resolve(data);
     }, delayMs);
+
     signal?.addEventListener('abort', () => {
       clearTimeout(timer);
       reject(new DOMException('Aborted', 'AbortError'));
@@ -123,7 +133,9 @@ export const mockApi = {
     opts?: FetchOptions,
   ) => {
     const tx = TRANSACTIONS.find((t) => t.id === id);
+
     if (!tx) return Promise.reject(new Error(`Transaction ${id} not found`));
+
     return respond({ ...tx, status }, opts);
   },
 };

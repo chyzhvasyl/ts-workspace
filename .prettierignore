@@ -4,3 +4,12 @@
 /coverage
 /.nx/cache
 /.nx/workspace-data
+
+# Content owned by third-party CLIs (skills, openspec): reformatting only creates churn
+/.claude/skills/nx-workspace
+/.claude/skills/openspec-*
+/.claude/commands/opsx
+/.github/skills/openspec-*
+/.github/prompts/opsx-*
+/openspec/specs
+/openspec/changes

@@ -1,0 +1,69 @@
+# OpenSpec project configuration (see https://github.com/Fission-AI/OpenSpec/blob/main/docs/customization.md)
+# `context` is injected into every artifact prompt; `rules` only into the matching artifact id
+# (proposal, specs, design, tasks). Keep it short: discoverable facts belong in the code,
+# conventions belong in .claude/CLAUDE.md and .github/copilot-instructions.md.
+schema: spec-driven
+
+context: |
+  Nx 24 monorepo (npm, Node 22.13+) for learning and experimentation. TypeScript 6.0 strict,
+  ES2022, NodeNext modules. ESLint 9 flat config (eslint.config.mjs), Prettier, Stylelint.
+  Full coding conventions: .claude/CLAUDE.md and .github/copilot-instructions.md (read them
+  before planning). Use the nx-workspace skill to explore projects, targets and dependencies.
+
+  Nx projects (use these exact names; run targets as `nx <target> <project>`):
+  - react-concepts (client-apps/react-concepts): React 19, Vite, SCSS modules, React Router 7. Vitest.
+  - fintech-playground (client-apps/fintech-playground): Vite + React client app with SCSS. Vitest.
+  - nest-concepts (server-apps/nest-concepts): NestJS 11, Express, Webpack, RxJS. Jest. Port 3000, prefix /api.
+  - nest-concepts-e2e (server-apps/nest-concepts-e2e): Jest e2e for nest-concepts.
+  - algorithm-training (ts-apps/algorithm-training): pure TypeScript algorithms and data structures. Jest.
+  - react-concepts-playwright-e2e, react-concepts-cypress-e2e (client-apps/): e2e for react-concepts.
+
+  Constraints that cannot be inferred from the code:
+  - Strict TS: no `any`, no `var`, early returns, handle every error path. Files kebab-case,
+    classes PascalCase, no `I` prefix on interfaces. Imports ordered by simple-import-sort.
+  - React: functional components and hooks only, SCSS modules, typed prop interfaces.
+  - NestJS: thin controllers, logic in services, DTOs with class-validator, correct HTTP status codes.
+  - Algorithms: own folder with index.ts, JSDoc stating time and space complexity, colocated .spec.ts.
+  - Tests: colocated *.spec.ts, Arrange-Act-Assert, mock external dependencies.
+  - No new dependencies unless the proposal justifies them.
+  - Quality gate before a PR: `npm run prepare-pr` (format, ESLint, Stylelint, build on affected projects).
+
+rules:
+  proposal:
+    - 'Name every affected Nx project (exact project names) under Impact.'
+    - 'Mark breaking changes with **BREAKING** and list non-goals explicitly.'
+    - 'Justify any new dependency and state the alternative considered.'
+  specs:
+    - 'Organize capabilities per Nx project as <nx-project>/<capability>, for
+      example nest-concepts/orders-api; use workspace/<capability> for
+      cross-project tooling.'
+    - 'Describe observable behavior only (UI behavior, HTTP contract and status
+      codes, function inputs and outputs, complexity guarantees); never class,
+      hook or file names.'
+    - 'Every requirement uses SHALL or MUST and has at least one scenario with
+      WHEN and THEN.'
+  design:
+    - 'Write design.md only for cross-project changes, new dependencies, or
+      non-trivial API or data changes; otherwise skip it.'
+    - 'Follow existing patterns in the target project and name the existing
+      files used as the reference pattern.'
+  tasks:
+    - 'Group tasks by Nx project and give each task its verification command (nx
+      test <project>, nx lint <project>, nx build <project>).'
+    - 'Create the colocated .spec.ts in the same task as the code it covers,
+      never in a later group.'
+    - 'End with a group that runs the workspace quality gate (npm run
+      prepare-pr).'
+
+operations:
+  apply:
+    guidance:
+      - 'Run nx test and nx lint for each touched project as tasks complete; run
+        npm run lint:styles when SCSS changed.'
+      - 'Run npm run prepare-pr before reporting the change as done.'
+      - 'Never run git commit or git push; leave commits to the user.'
+  archive:
+    guidance:
+      - 'Keep the completion summary short.'
+githubCopilot:
+  cloudAgent: false

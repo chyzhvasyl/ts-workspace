@@ -1,4 +1,4 @@
-import { PayoutErrors, PayoutForm } from './validators';
+import type { PayoutErrors, PayoutForm } from './validators';
 
 export interface UseFormResult {
   values: PayoutForm;

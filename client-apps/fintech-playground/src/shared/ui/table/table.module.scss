@@ -1,42 +1,49 @@
 .scroll {
-  overflow-x: auto;
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  overflow-x: auto;
 }
+
 .table {
-  width: 100%;
   border-collapse: collapse;
   font-size: 13px;
+  width: 100%;
 }
+
 .table thead th {
-  text-align: left;
-  padding: 10px 14px;
   background: var(--surface-2);
-  color: var(--text-muted);
-  font-weight: 600;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
   border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 10px 14px;
+  text-align: left;
+  text-transform: uppercase;
 }
+
 .table tbody td {
-  padding: 11px 14px;
   border-bottom: 1px solid var(--border);
   color: var(--text);
   font-variant-numeric: tabular-nums;
+  padding: 11px 14px;
 }
+
 .table tbody tr:last-child td {
   border-bottom: none;
 }
+
 .clickable {
   cursor: pointer;
+
   &:hover {
     background: var(--surface-2);
   }
 }
+
 .empty {
-  text-align: center;
   color: var(--text-subtle);
-  padding: 28px;
   font-style: italic;
+  padding: 28px;
+  text-align: center;
 }

@@ -1,4 +1,4 @@
-import { Transaction, TransactionStatus } from '../../shared/domain/types';
+import type { Transaction, TransactionStatus } from '../../shared/domain/types';
 
 export type SortBy = 'date' | 'amount';
 export type SortDir = 'asc' | 'desc';

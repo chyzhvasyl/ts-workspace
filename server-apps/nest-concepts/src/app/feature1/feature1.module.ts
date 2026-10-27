@@ -14,7 +14,6 @@ export class Feature1Service {
   exports: [Feature1Service],
   imports: [Feature2Module],
 })
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export class Feature1Module {
   constructor(private readonly _feature2: Feature2Service) {}
 }

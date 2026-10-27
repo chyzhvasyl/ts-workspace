@@ -1,4 +1,5 @@
 import { TaskPage } from '../../pages/task-page';
+
 import { BalanceLoader } from './balance-loader';
 
 export const meta = {
@@ -21,17 +22,6 @@ export const meta = {
 export function BalanceLoaderPage() {
   return (
     <TaskPage
-      meta={meta}
-      requirements={[
-        <>
-          Реалізуй <code>useAsync</code> у <code>use-async.ts</code> з усіма станами.
-        </>,
-        <>
-          Скасовуй запит у cleanup через <code>AbortController</code> і ігноруй
-          стейл-відповіді.
-        </>,
-        <>Не викликай setState після cleanup / unmount.</>,
-      ]}
       acceptance={[
         'Loading → success/error відображаються коректно.',
         'Швидке перемикання мерчанта показує відповідь ОСТАННЬОГО вибору.',
@@ -42,6 +32,17 @@ export function BalanceLoaderPage() {
         'useEffect(() => { const ac = new AbortController(); ...; return () => ac.abort(); }, deps).',
         'Прапорець let ignore = false; у cleanup ignore = true — захист від race.',
         'Чому не fetch у рендері? Side-effects живуть у useEffect, рендер має бути чистим.',
+      ]}
+      meta={meta}
+      requirements={[
+        <>
+          Реалізуй <code>useAsync</code> у <code>use-async.ts</code> з усіма станами.
+        </>,
+        <>
+          Скасовуй запит у cleanup через <code>AbortController</code> і ігноруй
+          стейл-відповіді.
+        </>,
+        <>Не викликай setState після cleanup / unmount.</>,
       ]}
     >
       <BalanceLoader />

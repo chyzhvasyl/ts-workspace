@@ -1,12 +1,13 @@
-// / <reference types='vitest' />
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 
 import react from '@vitejs/plugin-react';
+import { nxReadySignal } from '@nx/vite/plugins/nx-ready-signal.plugin';
 
 export default defineConfig({
-  root: __dirname,
+  resolve: {
+    tsconfigPaths: true,
+  },
+  root: import.meta.dirname,
   cacheDir: '../../node_modules/.vite/client-apps/fintech-playground',
   server: {
     port: 4250,
@@ -16,7 +17,7 @@ export default defineConfig({
     port: 4350,
     host: 'localhost',
   },
-  plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
+  plugins: [react(), nxReadySignal()],
   build: {
     outDir: '../../dist/client-apps/fintech-playground',
     emptyOutDir: true,

@@ -1,7 +1,0 @@
-.nx
-dist
-node_modules
-*.d.ts
-*.mjs
-.eslintrc.js
-*.config.js

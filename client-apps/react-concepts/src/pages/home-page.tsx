@@ -59,9 +59,9 @@ export function HomePage() {
 
       <div className={styles.grid}>
         {TOPICS.map((topic) => (
-          <Link key={topic.id} to={topic.path} className={styles.card}>
+          <Link className={styles.card} key={topic.id} to={topic.path}>
             <div className={styles.cardTop}>
-              <span className={`${styles.tag} ${styles[`tag_${topic.tagColor}`]}`}>
+              <span className={`${styles.tag} ${styles[topic.tagColor]}`}>
                 {topic.tag}
               </span>
               <h2 className={styles.cardTitle}>{topic.title}</h2>
@@ -69,7 +69,7 @@ export function HomePage() {
             </div>
             <ul className={styles.cardList}>
               {topic.items.map((item) => (
-                <li key={item.label} className={styles.cardItem}>
+                <li className={styles.cardItem} key={item.label}>
                   <span className={styles.arrow}>›</span>
                   <span>{item.label}</span>
                   <span className={styles.itemBadge}>{item.badge}</span>

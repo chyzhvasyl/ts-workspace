@@ -8,7 +8,7 @@ export function Spinner({ label }: SpinnerProps) {
   return (
     <div className={styles.wrap}>
       <span className={styles.ring} />
-      {label && <span className={styles.label}>{label}</span>}
+      {label && <span>{label}</span>}
     </div>
   );
 }

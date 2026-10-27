@@ -16,7 +16,8 @@
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
-    "exactOptionalPropertyTypes": false
+    "exactOptionalPropertyTypes": false,
+    "ignoreDeprecations": "6.0"
   },
   "exclude": ["node_modules"]
 }

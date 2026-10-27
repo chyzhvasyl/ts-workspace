@@ -1,12 +1,12 @@
 import { DemoBlock } from '../../shared/demo-block/demo-block';
 
-import { UseEffectCleanupDemo, UseEffectInfiniteLoopDemo } from './demos/use-effect-demo';
-import { UseRefDomDemo, UseRefMutableDemo } from './demos/use-ref-demo';
-import { UseMemoDemo } from './demos/use-memo-demo';
 import { StaleClosureDemo } from './demos/stale-closure-demo';
+import { UseDeferredValueDemo } from './demos/use-deferred-demo';
+import { UseEffectCleanupDemo, UseEffectInfiniteLoopDemo } from './demos/use-effect-demo';
+import { UseMemoDemo } from './demos/use-memo-demo';
+import { UseRefDomDemo, UseRefMutableDemo } from './demos/use-ref-demo';
 
 import styles from './hooks-page.module.scss';
-import { UseDeferredValueDemo } from './demos/use-deferred-demo';
 
 export function HooksPage() {
   return (
@@ -21,10 +21,8 @@ export function HooksPage() {
       </div>
 
       <DemoBlock
-        title="useEffect — нескінченний цикл"
         badge="danger"
         badgeText="❌ Найчастіша помилка"
-        description="Якщо в deps передати об'єкт або функцію, що створюється під час рендеру — отримаєш infinite loop. Об'єкт у deps ≠ той самий об'єкт після рендеру."
         code={`// ❌ ЗЛАМАНО — options новий об'єкт кожен рендер
 function Component({ userId }: { userId: string }) {
   const options = { method: 'GET' }; // новий obj кожен рендер!
@@ -39,15 +37,15 @@ useEffect(() => {
   const options = { method: 'GET' }; // всередині → не в deps
   fetch(\`/api/\${userId}\`, options).then(...)
 }, [userId]); // тільки примітиви`}
+        description="Якщо в deps передати об'єкт або функцію, що створюється під час рендеру — отримаєш infinite loop. Об'єкт у deps ≠ той самий об'єкт після рендеру."
+        title="useEffect — нескінченний цикл"
       >
         <UseEffectInfiniteLoopDemo />
       </DemoBlock>
 
       <DemoBlock
-        title="useEffect — cleanup & AbortController"
         badge="success"
         badgeText="✅ Best Practice"
-        description="Cleanup функція запускається перед наступним effect або при unmount. AbortController дозволяє скасувати fetch — критично при швидкому перемиканні між даними."
         code={`useEffect(() => {
   const controller = new AbortController();
 
@@ -62,15 +60,15 @@ useEffect(() => {
   // Cleanup: викликається при зміні userId або unmount
   return () => controller.abort();
 }, [userId]);`}
+        description="Cleanup функція запускається перед наступним effect або при unmount. AbortController дозволяє скасувати fetch — критично при швидкому перемиканні між даними."
+        title="useEffect — cleanup & AbortController"
       >
         <UseEffectCleanupDemo />
       </DemoBlock>
 
       <DemoBlock
-        title="useRef — доступ до DOM елементу"
         badge="info"
         badgeText="Юз-кейс 1/2"
-        description="Перший юз-кейс useRef — збереження посилання на DOM node. Зміна ref.current НЕ викликає ре-рендер на відміну від useState."
         code={`function Input() {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -85,15 +83,15 @@ useEffect(() => {
     </>
   );
 }`}
+        description="Перший юз-кейс useRef — збереження посилання на DOM node. Зміна ref.current НЕ викликає ре-рендер на відміну від useState."
+        title="useRef — доступ до DOM елементу"
       >
         <UseRefDomDemo />
       </DemoBlock>
 
       <DemoBlock
-        title="useRef — mutable значення без ре-рендеру"
         badge="info"
         badgeText="Юз-кейс 2/2"
-        description="Другий юз-кейс — зберігання будь-якого mutable значення (таймер id, попереднє значення, лічильник) без ре-рендеру. Якби використали useState для intervalId — start/stop давали б зайвий рендер."
         code={`function Timer() {
   const [count, setCount] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -110,15 +108,15 @@ useEffect(() => {
     intervalRef.current = null;
   };
 }`}
+        description="Другий юз-кейс — зберігання будь-якого mutable значення (таймер id, попереднє значення, лічильник) без ре-рендеру. Якби використали useState для intervalId — start/stop давали б зайвий рендер."
+        title="useRef — mutable значення без ре-рендеру"
       >
         <UseRefMutableDemo />
       </DemoBlock>
 
       <DemoBlock
-        title="useMemo — кешування важких обчислень"
         badge="warning"
         badgeText="Оптимізація"
-        description="useMemo кешує результат обчислення між рендерами. Корисний для дорогих фільтрацій, сортувань, трансформацій даних. НЕ для простих операцій — у нього є власний overhead."
         code={`// ❌ Без useMemo — важке обчислення на КОЖЕН рендер
 const filtered = heavyFilter(hugeDataset, query);
 
@@ -133,15 +131,15 @@ const filtered = useMemo(
 // ✅ Також корисний для стабілізації об'єктів як props для React.memo
 const config = useMemo(() => ({ theme: 'dark', lang: 'uk' }), []);
 return <ExpensiveChild config={config} />;`}
+        description="useMemo кешує результат обчислення між рендерами. Корисний для дорогих фільтрацій, сортувань, трансформацій даних. НЕ для простих операцій — у нього є власний overhead."
+        title="useMemo — кешування важких обчислень"
       >
         <UseMemoDemo />
       </DemoBlock>
 
       <DemoBlock
-        title="useState — stale closure проблема"
         badge="danger"
         badgeText="Пастка"
-        description="Якщо використовуєш useCallback з порожнім deps масивом і читаєш state всередині — отримаєш застаріле значення (stale closure). Рішення: functional update setCount(prev => prev + 1)."
         code={`// ❌ ПРОБЛЕМА — count завжди 0 всередині callback
 const handleBad = useCallback(() => {
   setCount(count + 1); // count замкнутий як 0!
@@ -151,11 +149,13 @@ const handleBad = useCallback(() => {
 const handleGood = useCallback(() => {
   setCount(prev => prev + 1); // prev — завжди актуальний
 }, []); // deps можна залишити порожнім — і це правильно`}
+        description="Якщо використовуєш useCallback з порожнім deps масивом і читаєш state всередині — отримаєш застаріле значення (stale closure). Рішення: functional update setCount(prev => prev + 1)."
+        title="useState — stale closure проблема"
       >
         <StaleClosureDemo />
       </DemoBlock>
 
-      <DemoBlock title="Use deferred" description="description" code="">
+      <DemoBlock code="" description="description" title="Use deferred">
         <UseDeferredValueDemo />
       </DemoBlock>
     </div>

@@ -1,11 +1,11 @@
 .count {
-  display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  font-family: var(--mono);
-  color: var(--warning);
   background: var(--warning-soft);
-  padding: 2px 8px;
   border-radius: 999px;
+  color: var(--warning);
+  display: inline-flex;
+  font-family: var(--mono);
+  font-size: 11px;
+  gap: 4px;
+  padding: 2px 8px;
 }

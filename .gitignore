@@ -20,10 +20,12 @@ dist
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+!.vscode/mcp.json
 
 # Nx
 .nx/cache
 .nx/workspace-data
+.nx/migrate-runs
 vite.config.*.timestamp*
 
 # Test artifacts
@@ -32,3 +34,6 @@ vite.config.*.timestamp*
 **/cypress/downloads
 test-results
 playwright-report
+
+# Playwright MCP output
+.playwright-mcp/

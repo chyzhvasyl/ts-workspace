@@ -43,10 +43,8 @@ const ChildMemoWithFn = memo(function ChildMemoWithFn({
 // ─── Demo Component ────────────────────────────────────────────────────────────
 export function ReRenderDemo() {
   const [count, setCount] = useState(0);
-
   // ❌ Новий об'єкт функції на кожен рендер → memo не допомагає
   const handleClickBad = () => console.log('bad click');
-
   // ✅ Стабільне посилання
   const handleClickGood = useCallback(() => console.log('good click'), []);
 
