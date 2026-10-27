@@ -21,7 +21,7 @@ export function Card({
 }: CardProps) {
   return (
     <section className={`${styles.card} ${className}`}>
-      {(title || actions) && (
+      {(Boolean(title) || Boolean(actions)) && (
         <header className={styles.head}>
           <div>
             {title && <h3 className={styles.title}>{title}</h3>}

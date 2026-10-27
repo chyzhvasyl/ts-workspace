@@ -37,6 +37,16 @@
         "cwd": "server-apps/nest-concepts",
         "commands": ["nest build --webpack --webpackPath webpack-hmr.config.js --watch"]
       }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "server-apps/nest-concepts",
+        "commands": [
+          "tsc -p tsconfig.app.json --noEmit",
+          "tsc -p tsconfig.spec.json --noEmit"
+        ]
+      }
     }
   }
 }

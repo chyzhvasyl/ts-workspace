@@ -15,5 +15,7 @@ export class Feature1Service {
   imports: [Feature2Module],
 })
 export class Feature1Module {
-  constructor(private readonly _feature2: Feature2Service) {}
+  constructor(_feature2: Feature2Service) {
+    // Injected for DI only; never read.
+  }
 }

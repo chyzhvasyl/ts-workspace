@@ -211,8 +211,8 @@ export function GuidePage() {
 
       <div className={styles.flow}>
         <strong>Робочий цикл:</strong> відкрий завдання → прочитай ТЗ ліворуч → знайди
-        файли з <code>// TODO</code> → напиши логіку → перевір у браузері → де є тести,
-        прожени <code>nx test fintech-playground</code>.
+        файли з <code>{'// TODO'}</code> → напиши логіку → перевір у браузері → де є
+        тести, прожени <code>nx test fintech-playground</code>.
       </div>
 
       {SECTIONS.map((s) => (

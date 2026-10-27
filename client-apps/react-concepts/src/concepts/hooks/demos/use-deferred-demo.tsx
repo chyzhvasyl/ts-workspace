@@ -34,6 +34,7 @@ export function UseDeferredValueDemo() {
   // deferredQuery — React оновить коли буде вільний (список може "відставати")
   const deferredQuery = useDeferredValue(query);
 
+  // eslint-disable-next-line no-console -- demo output: shows when the deferred value catches up
   console.log('deferredQuery', deferredQuery);
 
   // Поки deferredQuery не наздогнав query — список "застарів"

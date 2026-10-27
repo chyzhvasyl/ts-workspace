@@ -44,8 +44,10 @@ const ChildMemoWithFn = memo(function ChildMemoWithFn({
 export function ReRenderDemo() {
   const [count, setCount] = useState(0);
   // ❌ Новий об'єкт функції на кожен рендер → memo не допомагає
+  // eslint-disable-next-line no-console -- demo output: the click handler only logs
   const handleClickBad = () => console.log('bad click');
   // ✅ Стабільне посилання
+  // eslint-disable-next-line no-console -- demo output: the click handler only logs
   const handleClickGood = useCallback(() => console.log('good click'), []);
 
   return (
@@ -73,7 +75,7 @@ export function ReRenderDemo() {
 
         <div className={styles.col}>
           <p className={styles.colLabel}>❌ memo + нова функція</p>
-          <p className={styles.colHint}>onClick — новий об'єкт → memo марний</p>
+          <p className={styles.colHint}>onClick — новий об&apos;єкт → memo марний</p>
           <ChildMemoWithFn name="bad" onClick={handleClickBad} />
         </div>
 

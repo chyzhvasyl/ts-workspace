@@ -15,7 +15,6 @@ import { LoggerMiddleware } from './middleware';
     {
       provide: APP_GUARD,
       useClass: class {},
-      inject: [],
     },
   ],
 })

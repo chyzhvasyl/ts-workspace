@@ -3,7 +3,9 @@ import { REQUEST } from '@nestjs/core';
 
 @Injectable()
 export class Feature2Service {
-  constructor(@Inject(REQUEST) private readonly request: Request) {}
+  constructor(@Inject(REQUEST) _request: Request) {
+    // Injected for DI only; never read.
+  }
 
   getHello(): string {
     return 'Hello from Feature2!';

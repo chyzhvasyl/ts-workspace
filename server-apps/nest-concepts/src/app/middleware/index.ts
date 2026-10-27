@@ -5,7 +5,9 @@ import { Feature1Service } from '../feature1/feature1.module';
 
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
-  constructor(private readonly feature1: Feature1Service) {}
+  constructor(_feature1: Feature1Service) {
+    // Injected for DI only; never read.
+  }
 
   use(req: Request, res: Response, next: NextFunction): void {
     // eslint-disable-next-line no-console

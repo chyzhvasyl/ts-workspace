@@ -13,6 +13,13 @@
       "options": {
         "passWithNoTests": true
       }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "server-apps/nest-concepts-e2e",
+        "command": "tsc -p tsconfig.spec.json --noEmit"
+      }
     }
   }
 }

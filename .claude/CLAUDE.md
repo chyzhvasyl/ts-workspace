@@ -32,7 +32,7 @@ npm run openspec:validate        # Validate OpenSpec specs and changes
 - Imports: external → internal → relative (simple-import-sort).
 - React: functional components only, hooks, SCSS modules, typed prop interfaces.
 - NestJS: thin controllers, logic in services, DTOs with class-validator, proper HTTP status codes.
-- Algorithms: own folder with `index.ts`, JSDoc with complexity, colocated `.spec.ts`.
+- Algorithms: own folder with `index.ts`, JSDoc with complexity, colocated `.spec.ts`; `noUncheckedIndexedAccess` is off in this project only.
 - Tests: colocated `*.spec.ts`, Arrange–Act–Assert, mock externals. Vitest for React, Jest for NestJS/algorithms.
 - Follow existing patterns. Don't add unnecessary dependencies.
 

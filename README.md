@@ -55,12 +55,13 @@ nx test algorithm-training       # Jest
 npm run openspec:validate        # validate specs and in-flight changes
 ```
 
-`prepare-pr` stops at the first failing step. Some projects have known failures that predate the tooling (ESLint errors in `react-concepts` and `fintech-playground`, TypeScript build errors in `nest-concepts` and `algorithm-training`), so it fails when your change touches one of them.
+`prepare-pr` stops at the first failing step. `nx test fintech-playground` and its typecheck fail by design (the exercises are stubs), but neither is part of `prepare-pr`.
 
 ## Tech Stack
 
 - **Monorepo:** Nx 24
 - **Language:** TypeScript 6.0 (strict, ES2022, NodeNext)
+- **Strictness:** `noUncheckedIndexedAccess` is on everywhere except `ts-apps/algorithm-training` (its accepted solutions index arrays freely)
 - **Linting:** ESLint 9 (flat config) · Stylelint (standard SCSS) · Prettier
 - **Testing:** Vitest (React) · Jest (NestJS, algorithms) · Playwright and Cypress (E2E)
 

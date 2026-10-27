@@ -8,8 +8,8 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(
     private readonly appService: AppService,
-    private readonly feature1: Feature1Service,
-    private readonly feature2: Feature2Service,
+    _feature1: Feature1Service,
+    _feature2: Feature2Service,
   ) {}
 
   @Get()

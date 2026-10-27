@@ -20,6 +20,7 @@ export class TaskErrorBoundary extends Component<Props, State> {
   }
 
   override componentDidCatch(error: Error, info: ErrorInfo): void {
+    // eslint-disable-next-line no-console -- an error boundary's job is to log the error
     console.warn('[task stub not implemented]', error.message, info.componentStack);
   }
 
@@ -44,7 +45,7 @@ export class TaskErrorBoundary extends Component<Props, State> {
             }}
           >
             Цей екран кинув помилку, бо в одному з файлів завдання лишився{' '}
-            <code>// TODO</code>. Знайди функцію/хук зі стабом і реалізуй її — екран
+            <code>{'// TODO'}</code>. Знайди функцію/хук зі стабом і реалізуй її — екран
             оновиться сам.
           </p>
           <pre style={code}>{this.state.error.message}</pre>

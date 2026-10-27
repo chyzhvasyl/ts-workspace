@@ -18,6 +18,16 @@
       "options": {
         "buildTarget": "algorithm-training:build"
       }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "ts-apps/algorithm-training",
+        "commands": [
+          "tsc -p tsconfig.app.json --noEmit",
+          "tsc -p tsconfig.spec.json --noEmit"
+        ]
+      }
     }
   }
 }

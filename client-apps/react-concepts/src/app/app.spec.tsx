@@ -26,7 +26,9 @@ describe('App', () => {
   it('should display the root route content', () => {
     renderApp();
 
-    expect(screen.getByText(/This is the generated root route/i)).toBeTruthy();
+    expect(
+      screen.getByRole('heading', { level: 1, name: /^react concepts$/i }),
+    ).toBeTruthy();
   });
 
   it('should display navigation links', () => {
@@ -34,7 +36,9 @@ describe('App', () => {
 
     const nav = screen.getByRole('navigation');
 
-    expect(within(nav).getByRole('link', { name: /^home$/i })).toBeTruthy();
-    expect(within(nav).getByRole('link', { name: /^page 2$/i })).toBeTruthy();
+    expect(within(nav).getByRole('link', { name: /home/i })).toBeTruthy();
+    expect(within(nav).getByRole('link', { name: /rendering/i })).toBeTruthy();
+    expect(within(nav).getByRole('link', { name: /hooks/i })).toBeTruthy();
+    expect(within(nav).getByRole('link', { name: /context/i })).toBeTruthy();
   });
 });

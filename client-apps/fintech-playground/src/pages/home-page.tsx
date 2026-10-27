@@ -19,7 +19,7 @@ export function HomePage() {
         <p className={styles.subtitle}>
           8 завдань на чисту логіку React у фінтех-домені (комісії, інвойси, баланси,
           ledger). UI вже готовий — твоє завдання лише написати логіку. Відкрий завдання,
-          читай ТЗ ліворуч, реалізуй <code>// TODO</code> у файлах.
+          читай ТЗ ліворуч, реалізуй <code>{'// TODO'}</code> у файлах.
         </p>
         <div className={styles.metaRow}>
           <span>⚛️ React 19</span>
