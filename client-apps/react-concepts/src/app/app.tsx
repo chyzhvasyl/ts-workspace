@@ -1,70 +1,81 @@
-import { useEffect, useState } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { NavLink, Route, Routes } from 'react-router-dom';
 
-import NxWelcome from './nx-welcome';
+import { ContextPage } from '../concepts/context/context-page';
+import { HooksPage } from '../concepts/hooks/hooks-page';
+import { RenderingPage } from '../concepts/rendering/rendering-page';
+import { HomePage } from '../pages/home-page';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.scss';
 
-interface Resp {
-  message: string;
-}
+const NAV_ITEMS = [
+  {
+    path: '/',
+    label: 'Home',
+    icon: '🏠',
+    end: true,
+  },
+  {
+    path: '/rendering',
+    label: 'Rendering',
+    icon: '⚛️',
+    sub: 'Re-render, memo, keys, batching',
+  },
+  {
+    path: '/hooks',
+    label: 'Hooks',
+    icon: '🪝',
+    sub: 'useEffect, useRef, useMemo',
+  },
+  {
+    path: '/context',
+    label: 'Context',
+    icon: '📦',
+    sub: 'Re-render, split contexts',
+  },
+];
 
 export function App() {
-  const [data, setData] = useState<Resp | null>(null);
-
-  useEffect(() => {
-    const getData = async (): Promise<void> => {
-      const resp = await fetch('http://localhost:3000/api').then<Resp>((res) =>
-        res.json(),
-      );
-
-      setData(resp);
-    };
-
-    void getData();
-  }, []);
-
   return (
-    <div>
-      message response: {data?.message}
-      <NxWelcome title="react-concepts" />
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
-      </div>
-      <Routes>
-        <Route
-          element={
-            <div>
-              This is the generated root route.{' '}
-              <Link to="/page-2">Click here for page 2.</Link>
-            </div>
-          }
-          path="/"
-        />
-        <Route
-          element={
-            <div>
-              <Link to="/">Click here to go back to root page.</Link>
-            </div>
-          }
-          path="/page-2"
-        />
-      </Routes>
-      {/* END: routes */}
+    <div className={styles.layout}>
+      <aside className={styles.sidebar}>
+        <div className={styles.logo}>
+          <span className={styles.logoIcon}>⚛</span>
+          <span className={styles.logoText}>React Concepts</span>
+        </div>
+
+        <nav className={styles.nav}>
+          {NAV_ITEMS.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.end}
+              className={({ isActive }) =>
+                `${styles.navItem} ${isActive ? styles.navItemActive : ''}`
+              }
+            >
+              <span className={styles.navIcon}>{item.icon}</span>
+              <span className={styles.navContent}>
+                <span className={styles.navLabel}>{item.label}</span>
+                {item.sub && <span className={styles.navSub}>{item.sub}</span>}
+              </span>
+            </NavLink>
+          ))}
+        </nav>
+
+        <div className={styles.sidebarFooter}>
+          <span className={styles.footerText}>Senior Refresher</span>
+          <span className={styles.footerSub}>TypeScript · React 19</span>
+        </div>
+      </aside>
+
+      <main className={styles.main}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/rendering" element={<RenderingPage />} />
+          <Route path="/hooks" element={<HooksPage />} />
+          <Route path="/context" element={<ContextPage />} />
+        </Routes>
+      </main>
     </div>
   );
 }

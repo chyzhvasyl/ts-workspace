@@ -50,7 +50,6 @@ module.exports = {
     ],
     '@typescript-eslint/only-throw-error': 'error',
 
-
     // ─── JavaScript quality ──────────────────────────────────────────────────
     'no-console': 'error',
     'no-var': 'error',

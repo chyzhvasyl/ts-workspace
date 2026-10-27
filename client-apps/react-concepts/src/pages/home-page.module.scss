@@ -1,0 +1,148 @@
+.page {
+  padding: 40px 32px;
+  max-width: 1000px;
+}
+
+.hero {
+  margin-bottom: 40px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #374151;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 3px 10px;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 12px;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+  max-width: 560px;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+
+  &:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.12);
+    transform: translateY(-2px);
+  }
+}
+
+.cardTop {
+  margin-bottom: 16px;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-bottom: 10px;
+
+  &.tag_blue {
+    color: #2563eb;
+    background: #dbeafe;
+  }
+
+  &.tag_purple {
+    color: #7c3aed;
+    background: #ede9fe;
+  }
+
+  &.tag_cyan {
+    color: #0e7490;
+    background: #cffafe;
+  }
+}
+
+.cardTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px;
+}
+
+.cardDesc {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.cardList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.cardItem {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.arrow {
+  color: #9ca3af;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.itemBadge {
+  margin-left: auto;
+  font-size: 10px;
+  color: #9ca3af;
+  white-space: nowrap;
+}
+
+.cardFooter {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563eb;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}

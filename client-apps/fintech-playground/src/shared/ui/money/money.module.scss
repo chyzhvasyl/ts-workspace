@@ -1,0 +1,11 @@
+.money {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.pos {
+  color: var(--success);
+}
+.neg {
+  color: var(--danger);
+}

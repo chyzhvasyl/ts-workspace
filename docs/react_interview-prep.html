@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solidgate — Plan підготовки до співбесіди</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #fff;
+        color: #111;
+        font-family: 'Syne', sans-serif;
+        min-height: 100vh;
+        padding: 0 0 80px;
+      }
+
+      header {
+        padding: 48px 40px 36px;
+        border-bottom: 2px solid #111;
+      }
+
+      .company-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid #111;
+        border-radius: 6px;
+        padding: 4px 12px;
+        font-size: 12px;
+        font-family: 'JetBrains Mono', monospace;
+        color: #111;
+        letter-spacing: 0.08em;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        font-size: clamp(24px, 4vw, 40px);
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 8px;
+        color: #111;
+      }
+
+      h1 span {
+        color: #111;
+      }
+
+      .subtitle {
+        color: #555;
+        font-size: 14px;
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      .main {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 24px 0;
+      }
+
+      .alert {
+        background: #fff5f5;
+        border: 1px solid #fca5a5;
+        border-left: 3px solid #ef4444;
+        border-radius: 8px;
+        padding: 16px 20px;
+        margin-bottom: 32px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #111;
+      }
+
+      .alert strong {
+        color: #dc2626;
+      }
+
+      section {
+        margin-bottom: 40px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .section-num {
+        width: 28px;
+        height: 28px;
+        background: #111;
+        color: #fff;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        font-family: 'JetBrains Mono', monospace;
+        flex-shrink: 0;
+      }
+
+      h2 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #111;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 12px;
+      }
+
+      .card {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 18px 20px;
+      }
+
+      .card-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .badge {
+        font-size: 10px;
+        font-family: 'JetBrains Mono', monospace;
+        padding: 2px 7px;
+        border-radius: 4px;
+        font-weight: 600;
+      }
+
+      .badge-hot {
+        background: #fee2e2;
+        color: #dc2626;
+        border: 1px solid #fca5a5;
+      }
+      .badge-med {
+        background: #fef3c7;
+        color: #b45309;
+        border: 1px solid #fcd34d;
+      }
+      .badge-ok {
+        background: #dcfce7;
+        color: #16a34a;
+        border: 1px solid #86efac;
+      }
+
+      ul.topics {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      ul.topics li {
+        font-size: 13px;
+        color: #333;
+        line-height: 1.5;
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+      }
+
+      ul.topics li::before {
+        content: '›';
+        color: #555;
+        flex-shrink: 0;
+        font-weight: 700;
+      }
+
+      .code-block {
+        background: #f4f4f4;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 16px 20px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        color: #111;
+        margin-top: 8px;
+        line-height: 1.8;
+        overflow-x: auto;
+      }
+
+      .code-block .kw {
+        color: #2563eb;
+      }
+      .code-block .str {
+        color: #16a34a;
+      }
+      .code-block .comment {
+        color: #888;
+      }
+
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 15px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: #ddd;
+      }
+
+      .tl-item {
+        display: flex;
+        gap: 20px;
+        padding: 0 0 24px 0;
+        position: relative;
+      }
+
+      .tl-dot {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid #111;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-family: 'JetBrains Mono', monospace;
+        color: #111;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      .tl-content {
+        flex: 1;
+        padding-top: 4px;
+      }
+
+      .tl-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 4px;
+      }
+
+      .tl-desc {
+        font-size: 13px;
+        color: #444;
+        line-height: 1.6;
+      }
+
+      .question-block {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 10px;
+      }
+
+      .q-text {
+        font-size: 14px;
+        font-weight: 600;
+        color: #111;
+        margin-bottom: 10px;
+      }
+
+      .q-hint {
+        font-size: 12px;
+        color: #333;
+        font-family: 'JetBrains Mono', monospace;
+        line-height: 1.7;
+        padding: 10px 14px;
+        background: #f0f0f0;
+        border-radius: 6px;
+        border-left: 2px solid #555;
+      }
+
+      @media (max-width: 600px) {
+        header {
+          padding: 32px 20px 24px;
+        }
+        .main {
+          padding: 24px 16px 0;
+        }
+      }
+
+      .divider {
+        height: 1px;
+        background: #ddd;
+        margin: 40px 0;
+      }
+
+      .advantage-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      @media (max-width: 600px) {
+        .advantage-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .adv-card {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 16px 18px;
+      }
+
+      .adv-label {
+        font-size: 10px;
+        font-family: 'JetBrains Mono', monospace;
+        color: #666;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .adv-text {
+        font-size: 13px;
+        line-height: 1.6;
+        color: #222;
+      }
+
+      .adv-card.positive {
+        border-left: 3px solid #16a34a;
+      }
+      .adv-card.negative {
+        border-left: 3px solid #dc2626;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="company-tag">⚡ Solidgate · Frontend Engineer · Finance Team</div>
+      <h1>План підготовки<br />до <span>співбесіди</span></h1>
+      <p class="subtitle">TypeScript · React · Architecture · Web Performance</p>
+    </header>
+
+    <div class="main">
+      <!-- КОНТЕКСТ -->
+      <div class="alert">
+        <strong>⚠ Головний ризик:</strong> Ти давно не писав на React — саме це буде
+        перевіряти рекрутер у першу чергу. Вакансія вимагає
+        <strong>3+ роки React/TS</strong>, і вони будуть питати конкретні патерни. Твій
+        Angular-досвід — перевага по архітектурі, але треба "розморозити" React-мислення.
+      </div>
+
+      <!-- БЛОК 1 — ЩО ПЕРЕВІРЯЮТЬ -->
+      <section>
+        <div class="section-header">
+          <div class="section-num">1</div>
+          <h2>Що вони перевіряють (з вакансії)</h2>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="card-title">
+              TypeScript / React <span class="badge badge-hot">КРИТИЧНО</span>
+            </div>
+            <ul class="topics">
+              <li>Generics, utility types, conditional types</li>
+              <li>React hooks у деталях (useCallback, useMemo, useRef)</li>
+              <li>Rendering behavior, reconciliation</li>
+              <li>Context vs зовнішній стейт</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              Web Performance <span class="badge badge-hot">КРИТИЧНО</span>
+            </div>
+            <ul class="topics">
+              <li>Core Web Vitals (LCP, CLS, INP)</li>
+              <li>Code splitting, lazy loading, tree shaking</li>
+              <li>Мережа: HTTP/2, caching, prefetch</li>
+              <li>Virtual DOM vs реальний DOM</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              Архітектура <span class="badge badge-med">ВАЖЛИВО</span>
+            </div>
+            <ul class="topics">
+              <li>DDD, Clean Architecture, Layered</li>
+              <li>Feature-sliced design або аналоги</li>
+              <li>Design system, component library</li>
+              <li>Separation of concerns без фреймворку</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              Тестування <span class="badge badge-med">ВАЖЛИВО</span>
+            </div>
+            <ul class="topics">
+              <li>Unit: Vitest / Jest</li>
+              <li>Integration: Testing Library</li>
+              <li>E2E: Playwright / Cypress</li>
+              <li>Що тестувати, а що ні — і чому</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              Browser internals <span class="badge badge-med">ВАЖЛИВО</span>
+            </div>
+            <ul class="topics">
+              <li>Event loop, microtasks, macrotasks</li>
+              <li>Rendering pipeline (layout, paint, composite)</li>
+              <li>Memory leaks у React-компонентах</li>
+              <li>CORS, CSP, cookies vs localStorage</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              Product & Ownership <span class="badge badge-ok">ПЛЮС</span>
+            </div>
+            <ul class="topics">
+              <li>Приклади де ти брав ініціативу</li>
+              <li>Як приймав архітектурні рішення</li>
+              <li>Робота в fintech / складні UI-таблиці</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- БЛОК 2 — REACT REFRESHER -->
+      <section>
+        <div class="section-header">
+          <div class="section-num">2</div>
+          <h2>React Refresher — ключові теми (пріоритет 1)</h2>
+        </div>
+
+        <div class="question-block">
+          <div class="q-text">🔁 Rendering & Reconciliation</div>
+          <div class="q-hint">
+            Знай різницю між re-render і re-mount. Коли React пропускає рендер? Що таке
+            fiber? Як працює key prop при списках? Коли React.memo дійсно допомагає, а
+            коли — ні?
+          </div>
+          <div class="code-block">
+            <span class="comment"
+              >// Це ре-рендер КОЖЕН раз — навіть якщо value не змінилась</span
+            >
+            <span class="kw">const</span> handler = () => doSomething();
+            <span class="comment">// new ref on every render</span>
+
+            <span class="comment">// Фікс:</span>
+            <span class="kw">const</span> handler = useCallback(() => doSomething(), []);
+
+            <span class="comment"
+              >// React.memo корисний тільки якщо props стабільні за посиланням</span
+            >
+            <span class="kw">const</span> Comp = React.memo(({
+            <span class="str">onClick</span> }) => &lt;button onClick={onClick} /&gt;);
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="q-text">🪝 Hooks — глибше ніж базово</div>
+          <div class="q-hint">
+            useLayoutEffect vs useEffect — коли і чому. useRef для mutable values без
+            re-render. useDeferredValue / useTransition для concurrent features. Custom
+            hooks — як тестувати.
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="q-text">📦 State Management</div>
+          <div class="q-hint">
+            Context — де підходить, де стає проблемою (re-render всього дерева). Zustand
+            vs Redux Toolkit — трейд-офи. Як би ти спроектував стейт для сторінки інвойсів
+            з фільтрами, пагінацією і real-time оновленнями?
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="q-text">🧪 Тестування React-компонентів</div>
+          <div class="q-hint">
+            Testing Library: getByRole vs getByTestId — і чому перший кращий. Як мокати
+            модулі, API. Що таке "тест, що не дає false confidence". fireEvent vs
+            userEvent.
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- БЛОК 3 — АРХІТЕКТУРА -->
+      <section>
+        <div class="section-header">
+          <div class="section-num">3</div>
+          <h2>Архітектура — твоя перевага з Angular</h2>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="card-title">DDD у фронтенді</div>
+            <ul class="topics">
+              <li>Bounded contexts → feature modules</li>
+              <li>Domain layer без React-залежностей</li>
+              <li>Use cases / application services</li>
+              <li>Аналогія: те, що ти робив в Nx monorepo!</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-title">Clean Architecture</div>
+            <ul class="topics">
+              <li>Dependency inversion у UI-коді</li>
+              <li>Adapters для API (не fetch напряму в компоненті)</li>
+              <li>Testability через інтерфейси</li>
+              <li>Інваріанти бізнес-логіки — не в компонентах</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-title">Design System</div>
+            <ul class="topics">
+              <li>Compound components pattern</li>
+              <li>Headless UI підхід</li>
+              <li>Design tokens через CSS variables</li>
+              <li>Storybook як документація</li>
+            </ul>
+          </div>
+        </div>
+        <div class="code-block" style="margin-top: 12px">
+          <span class="comment"
+            >// Feature-Sliced Design — знайома тобі як Nx domain libs</span
+          >
+          src/ features/ invoices/
+          <span class="str">api/</span>
+          <span class="comment">← adapters (HTTP → domain models)</span>
+          <span class="str">model/</span>
+          <span class="comment">← стейт, бізнес-логіка, чиста TS</span>
+          <span class="str">ui/</span> <span class="comment">← React компоненти</span>
+          shared/
+          <span class="str">ui/</span>
+          <span class="comment">← design system компоненти</span>
+          <span class="str">lib/</span>
+          <span class="comment">← утиліти без фреймворкових залежностей</span>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- БЛОК 4 — ТИПОВІ ПИТАННЯ -->
+      <section>
+        <div class="section-header">
+          <div class="section-num">4</div>
+          <h2>Типові питання на співбесіді — і як відповідати</h2>
+        </div>
+
+        <div class="question-block">
+          <div class="q-text">
+            «Розкажи про складний технічний challenge, який ти вирішував»
+          </div>
+          <div class="q-hint">
+            Формат STAR (Situation → Task → Action → Result). Готуй 2 приклади: один про
+            архітектуру (як Nx monorepo або touch events directive), один про performance
+            або складний UI. Числа завжди сильніше: "скоротили bundle на 30%", "TTI впав з
+            4s до 1.2s".
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="q-text">«Як ти підходиш до проектування фічі?»</div>
+          <div class="q-hint">
+            1) Зрозуміти проблему → 2) API design (компонент/хук) → 3) edge cases → 4)
+            тести → 5) performance considerations. Покажи, що думаєш про DX так само як
+            про UX.
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="q-text">«У вас React, ти довго писав Angular — як переходиш?»</div>
+          <div class="q-hint">
+            Не виправдовуйся. Скажи: "Core concepts — однакові: компонентна архітектура,
+            DI-мислення (custom hooks = services), реактивність. Angular навчив мене
+            думати про архітектуру серйозно. React я вже освіжив — ось що я зробив
+            [конкретно]."
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="q-text">«Як би ти побудував таблицю з мільйоном транзакцій?»</div>
+          <div class="q-hint">
+            Virtual scrolling (react-virtual / TanStack Virtual). Pagination vs infinite
+            scroll — трейд-офи. Server-side filtering/sorting. Optimistic updates.
+            Skeleton states. Це прямо про їхній продукт — відповідай конкретно.
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- БЛОК 5 — ТВОЇ ПЛЮСИ/МІНУСИ -->
+      <section>
+        <div class="section-header">
+          <div class="section-num">5</div>
+          <h2>Твоя позиція: переваги vs ризики</h2>
+        </div>
+        <div class="advantage-grid">
+          <div class="adv-card positive">
+            <div class="adv-label">✅ Перевага</div>
+            <div class="adv-text">
+              Nx monorepo + domain-driven libs — це саме те, що вони хочуть під "DDD,
+              Clean Architecture". Ти вже так думаєш.
+            </div>
+          </div>
+          <div class="adv-card negative">
+            <div class="adv-label">⚠ Ризик</div>
+            <div class="adv-text">
+              React-специфічний синтаксис і паттерни (hooks deps, memo, context) — розімни
+              до співбесіди, щоб не "зависати" на базових питаннях.
+            </div>
+          </div>
+          <div class="adv-card positive">
+            <div class="adv-label">✅ Перевага</div>
+            <div class="adv-text">
+              Досвід з design system і component API design (наприклад, дебати по touch
+              directive, width as input) — це конкретні приклади архітектурного мислення.
+            </div>
+          </div>
+          <div class="adv-card negative">
+            <div class="adv-label">⚠ Ризик</div>
+            <div class="adv-text">
+              Fintech-домен (інвойси, комісії, баланси) — новий. Вивчи базово як працює
+              fee calculation і що таке reconciliation у фінансах.
+            </div>
+          </div>
+          <div class="adv-card positive">
+            <div class="adv-label">✅ Перевага</div>
+            <div class="adv-text">
+              TypeScript — глибокий досвід через Angular. Generic типи, utility types
+              знаєш добре.
+            </div>
+          </div>
+          <div class="adv-card positive">
+            <div class="adv-label">✅ Перевага</div>
+            <div class="adv-text">
+              Вони будують з нуля — це твоя сильна сторона: Nx, архітектурні рішення,
+              масштабованість.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- БЛОК 6 — ПЛАН ПО ДНЯХ -->
+      <section>
+        <div class="section-header">
+          <div class="section-num">6</div>
+          <h2>План підготовки по днях</h2>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot">1</div>
+            <div class="tl-content">
+              <div class="tl-title">День 1-2 — React Refresher</div>
+              <div class="tl-desc">
+                Пройди офіційний react.dev (особливо розділ "Escape Hatches"). Зроби
+                маленький CRUD-проект без туторіалу. Фокус: hooks, state lifting,
+                useEffect cleanup.
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">2</div>
+            <div class="tl-content">
+              <div class="tl-title">День 3 — Performance & Browser</div>
+              <div class="tl-desc">
+                web.dev/performance, Chrome DevTools Performance tab. Зрозумій Core Web
+                Vitals. Прочитай про event loop (Jake Archibald: "In The Loop"). React
+                Profiler — запусти на реальному проекті.
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">3</div>
+            <div class="tl-content">
+              <div class="tl-title">День 4 — Архітектура + TypeScript</div>
+              <div class="tl-desc">
+                Переформулюй свій Nx-досвід у термінах DDD/Clean Architecture. Практика:
+                напиши domain layer для "Invoice" entity чистим TS без React. Підготуй 3
+                STAR-приклади.
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">4</div>
+            <div class="tl-content">
+              <div class="tl-title">День 5 — Mock Interview</div>
+              <div class="tl-desc">
+                Попроси когось провести мок або використай ChatGPT/Claude як інтерв'юера.
+                Питай специфічно: "Дай мені 10 React-питань рівня senior". Записуй де
+                "зависаєш".
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">✓</div>
+            <div class="tl-content">
+              <div class="tl-title">День співбесіди — фокус</div>
+              <div class="tl-desc">
+                Переглянь Solidgate docs і їхній GitHub. Підготуй 2-3 питання їм: як
+                організований frontend, які кодерев'ю практики, яка свобода в
+                архітектурних рішеннях.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ПИТАННЯ ЇМ -->
+      <section>
+        <div class="section-header">
+          <div class="section-num">7</div>
+          <h2>Питання для тебе → до них</h2>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <ul class="topics" style="gap: 10px">
+              <li>Як зараз організований frontend стек — монорепо, окремі SPA?</li>
+              <li>Яка поточна стратегія тестування і яке покриття цільове?</li>
+              <li>Як виглядає процес від задачі до production — CI/CD, рев'ю?</li>
+              <li>Наскільки фронтенд інженери залучені до продуктових рішень?</li>
+              <li>Що не подобається в поточній кодовій базі і що хочете змінити?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

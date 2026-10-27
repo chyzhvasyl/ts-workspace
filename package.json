@@ -4,6 +4,7 @@
   "scripts": {
     "react-app:start": "nx serve react-concepts",
     "react-app:build": "nx build react-concepts",
+    "fintech-app:serve": "nx serve fintech-playground",
     "nest-app:serve": "nx serve nest-concepts",
     "nest-app:hot-serve": "nx run nest-concepts:serve-hmr",
     "nest-app:build": "nx build nest-concepts",

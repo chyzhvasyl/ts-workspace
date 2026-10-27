@@ -1,1 +1,130 @@
-/* Your styles goes here. */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+// ─── Sidebar ───────────────────────────────────────────────────────────────────
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: #fff;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.logoIcon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.logoText {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.nav {
+  flex: 1;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #374151;
+  transition: all 0.15s;
+
+  &:hover {
+    background: #f3f4f6;
+    color: #111827;
+  }
+}
+
+.navItemActive {
+  background: #eff6ff;
+  color: #2563eb;
+
+  .navLabel {
+    color: #2563eb;
+    font-weight: 700;
+  }
+
+  .navSub {
+    color: #93c5fd;
+  }
+}
+
+.navIcon {
+  font-size: 16px;
+  line-height: 1;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.navContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.navLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: inherit;
+  line-height: 1.2;
+}
+
+.navSub {
+  font-size: 11px;
+  color: #9ca3af;
+  line-height: 1.3;
+}
+
+.sidebarFooter {
+  padding: 16px 20px;
+  border-top: 1px solid #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footerText {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.footerSub {
+  font-size: 11px;
+  color: #9ca3af;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+// ─── Main ──────────────────────────────────────────────────────────────────────
+.main {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+}

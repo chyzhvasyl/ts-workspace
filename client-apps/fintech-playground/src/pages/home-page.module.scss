@@ -1,0 +1,123 @@
+.page {
+  padding: 36px 32px 60px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.hero {
+  margin-bottom: 32px;
+}
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--primary-soft);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+.title {
+  font-size: 34px;
+  margin: 14px 0 10px;
+}
+.subtitle {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 72ch;
+  line-height: 1.65;
+}
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+.guideLink {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 18px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: all 0.15s;
+  &:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.12);
+  }
+}
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.order {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-subtle);
+  font-weight: 700;
+}
+.diff {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.junior {
+  background: var(--success-soft);
+  color: var(--success);
+}
+.middle {
+  background: var(--info-soft);
+  color: var(--info);
+}
+.senior {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+.cardTitle {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+.cardDesc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  flex: 1;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 14px 0 12px;
+}
+.tag {
+  font-size: 10px;
+  font-family: var(--mono);
+  color: var(--text-muted);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+.cardFooter {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+}

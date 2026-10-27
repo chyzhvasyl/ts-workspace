@@ -1,0 +1,97 @@
+.page {
+  padding: 32px;
+  max-width: 900px;
+}
+
+.pageHeader {
+  margin-bottom: 32px;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0e7490;
+  background: #cffafe;
+  border-radius: 4px;
+  padding: 2px 10px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 8px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.table {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+
+  h3 {
+    margin: 0 0 16px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #111827;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+
+    thead tr {
+      background: #f3f4f6;
+    }
+
+    th {
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      padding: 12px 14px;
+      border-top: 1px solid #f3f4f6;
+      color: #374151;
+    }
+
+    tr:hover td {
+      background: #fafafa;
+    }
+  }
+}
+
+.tableTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.good {
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.warn {
+  color: #d97706;
+  font-weight: 500;
+}
